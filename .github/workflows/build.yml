@@ -1,0 +1,28 @@
+name: Build and test
+on: [push, pull_request]
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch runtime models
+        run: git lfs pull --include="assets/models/**" --exclude=""
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - run: dotnet restore NusantaraFishingMadness.slnx --locked-mode
+      - run: dotnet build NusantaraFishingMadness.slnx --configuration Release --no-restore
+      - run: dotnet test NusantaraFishingMadness.slnx --configuration Release --no-build --logger trx
+      - run: python tools/validate-visual-assets.py
+      - run: dotnet run --project tools/NusantaraFishing.Acceptance -c Release --no-build -- --delay-ms 100
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validation-${{ matrix.os }}
+          path: |
+            **/TestResults/*.trx
+            artifacts/acceptance/*.json

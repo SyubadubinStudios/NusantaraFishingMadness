@@ -1,0 +1,20 @@
+{
+  "Date": "2026-10-16",
+  "Version": "0.2.0-preview.1",
+  "Runtime": "win-x64",
+  "Package": "win-x64-20261016-041750",
+  "ZipBytes": 179297822,
+  "ZipSha256": "7f69762ce899c0dce093db42c01a9cc61b7351a44765c29f093e38cbe7c5c631",
+  "VerifiedFiles": 741,
+  "Signed": false,
+  "IsolatedInstallUninstallPassed": true,
+  "UnknownFilePreserved": true,
+  "PackagedNativeMultiplayerPassed": true,
+  "TextInputIsolationPassed": true,
+  "NativeVirtualGamepadPassed": true,
+  "LocalOnlineSeparationPassed": true,
+  "PackagedOfflineVisualSmokePassed": true,
+  "PackagedCharacterSwitchingPassed": true,
+  "CrossPlatformRuntimeVerified": false,
+  "Notes": "Contains the detailed art pass and cross-scene cache compatibility fix. Package documentation is the build-time checkpoint; this post-build verification record lives in the repository."
+}

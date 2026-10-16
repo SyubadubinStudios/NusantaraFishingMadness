@@ -1,0 +1,1297 @@
+{
+  "assets": [
+    {
+      "path": "assets/models/bakso.glb",
+      "bytes": 2686736,
+      "sha256": "5074d5ff5f6d4754b8087466bcfe2debfc48247da27e2333d5cb803d006bcf36",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/bambang.glb",
+      "bytes": 2674076,
+      "sha256": "765ffe08c729289b3b412ad87da7fb8c03b96d9c1785d7ff91725f04203a7e14",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/banana-plant.glb",
+      "bytes": 462088,
+      "sha256": "69b90c3eb1b3e37e9fc6ad0d51e100022635f6e7d8113471eebc8873dd0c950c",
+      "triangles": 2999,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/branching-coral.glb",
+      "bytes": 59780,
+      "sha256": "99a0639ac745336407782bb89ef8b2cd26bf06c3f30cd6c5b7c8b60681dac685",
+      "triangles": 924,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-arwana.glb",
+      "bytes": 82684,
+      "sha256": "200aeeee1686ad360d2b4d9291fe000685ef9e50b86dcc97a3ced012a700a95f",
+      "triangles": 2724,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-atm.glb",
+      "bytes": 30732,
+      "sha256": "a40312fa278dacad28a3a68d60342fb334f4c549764084e7212229faf9061f59",
+      "triangles": 432,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-batik.glb",
+      "bytes": 1166520,
+      "sha256": "b8362b14f1fc93fec8f0ac42137fb2b468a3b1c73549ecd9bc0ce6235abecd3b",
+      "triangles": 5544,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-belut.glb",
+      "bytes": 35984,
+      "sha256": "0df7056d2a75fd92888453416f44ad83fae396560390622aa04e7dbdbb913d3c",
+      "triangles": 1252,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-biawak.glb",
+      "bytes": 1223584,
+      "sha256": "32ac54d4c1a7c6cf3627d96843dbc06f81f2d851c8dc30db533e4c82cc7c3b9e",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-ampat.glb",
+      "bytes": 1120512,
+      "sha256": "e24cdc4fdf4dfcabf453aeb651d9a22732951cc4506039a8c54a387d67ecf376",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-awan.glb",
+      "bytes": 1053472,
+      "sha256": "bf401defadc1888f9fdc03e70b0cd02f7bb7feca317d946c86b40c7ffab93877",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-dimensi.glb",
+      "bytes": 1063616,
+      "sha256": "81cf3d5105d29664810f27cfaaf95f9bbf8dc3f48cc98d8133cedd52f87e825e",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-gua.glb",
+      "bytes": 1269664,
+      "sha256": "d568769b12ecb243f9fc43bbebd1f2ac575709bb57a6dc13e18d80e250c55784",
+      "triangles": 4199,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-gunung.glb",
+      "bytes": 36008,
+      "sha256": "d4e9a79b819e817417316fb9660849ad2a392547bbfb21f13c11b10580b6611f",
+      "triangles": 1252,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-boss-jakarta.glb",
+      "bytes": 1223600,
+      "sha256": "92c3fa79414a78cac21baa05276612d410379666591c500c5a80014f778ad6a2",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-kalimantan.glb",
+      "bytes": 1223612,
+      "sha256": "839c30ea0fd32df3554da96acc985e4e3785084b568f565aaaf247720eabf353",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-kelimutu.glb",
+      "bytes": 1269680,
+      "sha256": "77a81350f50656f36b001aba0a32eee032021bae2d9462e2a098b892373a0977",
+      "triangles": 4199,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-kristal.glb",
+      "bytes": 1120592,
+      "sha256": "bc6c582d38b33953e00a3591fd29016991f4c6ff0331c0fc0aca91cbb429f310",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-kubangan.glb",
+      "bytes": 1063620,
+      "sha256": "3ec8bb8eb971ddfb30940eddde6cb470da18cd152b465b1b17e0c2386a26eeca",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-selatan.glb",
+      "bytes": 1120512,
+      "sha256": "f9b46272414c95a3bd157cc1f43eb86d3395006f7f007b4b0192628966c96c6a",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-tambang.glb",
+      "bytes": 1063616,
+      "sha256": "76998530e2c9ef8b5edbdb689da91d554b52c433b1ace65eaae2207a46933e27",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-boss-terjun.glb",
+      "bytes": 44308,
+      "sha256": "9a6df436346be2259bdb85156dd5d7453007505f738402a3ee3587eee3e348d0",
+      "triangles": 1380,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-boss-toba.glb",
+      "bytes": 1269668,
+      "sha256": "47c359238ee79f90941fff77c23c6776ce81b902893538a501c2deafc9d4a95c",
+      "triangles": 4199,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-buaya.glb",
+      "bytes": 1223580,
+      "sha256": "cab61a82c07733f776749c90b0ab1025fb5523f9e6cb2c46acfee30b7921ff57",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-disco.glb",
+      "bytes": 1057132,
+      "sha256": "d14fb3733e51a45e25255b5486f8675efb99ec97279c775c8b4c8addfd67a3bd",
+      "triangles": 4199,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-dj.glb",
+      "bytes": 1136620,
+      "sha256": "790a414130c2adfc032f60811765be00af0225ba3b6349ec0a93f5984f62355e",
+      "triangles": 4708,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-dugong.glb",
+      "bytes": 818056,
+      "sha256": "b69fe2403d189e4f124ae9be0c2348e289a3d0c713784da9ac058182c961ce0a",
+      "triangles": 4199,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-gabus.glb",
+      "bytes": 44280,
+      "sha256": "112bfffe3e1e4138add7cb9975134b0331b36a8f8507ac284dc072580786f98b",
+      "triangles": 1380,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-ghost.glb",
+      "bytes": 1063660,
+      "sha256": "21c35c4fcfa545fafad649386271863a1017de7d56de73332b4081d52141e96e",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-gurame.glb",
+      "bytes": 50432,
+      "sha256": "6a322d7f79b2f047315e213d6fb68068b7376d033f6b994e20a2c1d232bfb9b6",
+      "triangles": 1604,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-gurita.glb",
+      "bytes": 1120508,
+      "sha256": "959f121adc7ea18cd1def5063d21c0da7a78e07b6a3b0f52b50aa51430518c81",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-hiu.glb",
+      "bytes": 82684,
+      "sha256": "56430009207d85ca89f9a25d81efc9059422168290e38f0aa58cdc6caec7e5a5",
+      "triangles": 2724,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-kasur.glb",
+      "bytes": 57292,
+      "sha256": "49b4aef334b6998f00df189625eabd71e203fdfc0355428f31c8dc154692abaf",
+      "triangles": 772,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-kepiting.glb",
+      "bytes": 1069764,
+      "sha256": "26a1e42d44c45c3e142161574bd8995cf0b2e160b0ee74ae749a77c8a64902b5",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-kerapu.glb",
+      "bytes": 82696,
+      "sha256": "9b595773aca9491534bb0051a12ae6444a460a43adcf93f66a35e4cb89f0f4ec",
+      "triangles": 2724,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-keris.glb",
+      "bytes": 12556,
+      "sha256": "7234300c998fd7ecbfb664e0fa0ecb975e1e37a611e9503d5324738e10ef5cd3",
+      "triangles": 228,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-kodok.glb",
+      "bytes": 1212488,
+      "sha256": "90a3f818b21e205421cb2740ebc8582101484ac66f4f8144e79c526439d33604",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-kulkas.glb",
+      "bytes": 31624,
+      "sha256": "dd3ce12e5efa9b3893a798597662478ebf8156109821b5dab3d8f379a3896fa6",
+      "triangles": 432,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-kura.glb",
+      "bytes": 1248592,
+      "sha256": "8bd9ed442c1e71730f02f363c6b20e4d4a7d02a49bd230e72db8944b196aa4eb",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-lele.glb",
+      "bytes": 1063592,
+      "sha256": "e01e5a7b864d4fab03246ad5373bf8aefc7a45e09832964f3887ac1e259a5ffd",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-lobster.glb",
+      "bytes": 72632,
+      "sha256": "75c0170ec2e4c983838bacd320451116060d42249c4cc31a245db5c5f42fe158",
+      "triangles": 2536,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-lumba.glb",
+      "bytes": 50468,
+      "sha256": "e404b42e374908fa7f01ba2dd39535fa39e5c7b715e805b6d33d3ecbe726cbe8",
+      "triangles": 1604,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-mahkota.glb",
+      "bytes": 56948,
+      "sha256": "6dffe49ab6169ca10baf7777f0be49b3d7dbf73172617742594d244ca8437730",
+      "triangles": 2016,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-motor.glb",
+      "bytes": 65244,
+      "sha256": "1a57fc6f22bd7ffffbd313f6fb61e5a78271c0b6416c127ce00bd62bb688a33b",
+      "triangles": 944,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-ninja.glb",
+      "bytes": 1212488,
+      "sha256": "5c48d20df770675bcc8cce9d0ee11e2d91961e16cf64d9f7b91fd2dab212a536",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-patenggang.glb",
+      "bytes": 1269672,
+      "sha256": "dc692fbe4d3721321a53d37200d64eb48d06aa1bf13f83b419a73af1fd064a1b",
+      "triangles": 4199,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-paus-kubangan.glb",
+      "bytes": 1053484,
+      "sha256": "9e2412bd73b67fa1bb6f13c05c428d836da980be62e1a996fe1b7b0c2a64836a",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-penunggu.glb",
+      "bytes": 1063604,
+      "sha256": "7e03025908884bafeb8f77072586aa39e9d363b12927f4e7b8bba8abca2e035e",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-peta.glb",
+      "bytes": 13064,
+      "sha256": "4eef64e2d16fcac5fdcd8fba7537229597aa372ec605befff7ccb24e11b10408",
+      "triangles": 208,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-peti.glb",
+      "bytes": 62996,
+      "sha256": "8c390b37d0fa057980db94c39ffc6a6dec777a37313086855eae963addbc4bff",
+      "triangles": 864,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-phantom.glb",
+      "bytes": 1120572,
+      "sha256": "b2966895b5ad489d87d2f21e9991d55900cd30a9834b5d1d6904b5d12917f7a0",
+      "triangles": 4200,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-profesor.glb",
+      "bytes": 1129172,
+      "sha256": "6885f0978e659778b24ae5d33a23c0af60a5cf1a49462221186d6514b9de955d",
+      "triangles": 4308,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-radioaktif.glb",
+      "bytes": 1063692,
+      "sha256": "ff1d40c339362d7f37913f3431d436edd30a6eadcb149a99f9979936c13af852",
+      "triangles": 4200,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-raja.glb",
+      "bytes": 1269652,
+      "sha256": "072ec48816bda279767f52002963ebe131a63e2806abe7f15d129d2100ce5d71",
+      "triangles": 4199,
+      "animations": 1,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-roket.glb",
+      "bytes": 1057056,
+      "sha256": "11a6826b281c941bed50eb9f9133222b47e2225c211888f16223529cb4cc8a60",
+      "triangles": 4199,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/catch-sandal.glb",
+      "bytes": 11824,
+      "sha256": "72048ee2117098001e2d94d8d2d23ff7b12a10a213020b218ea9ae2a7cde75c3",
+      "triangles": 196,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-shadow.glb",
+      "bytes": 44288,
+      "sha256": "882eb25e9938990e7bb0467a51c1250787c528fb55d8fef01cc023112bc21827",
+      "triangles": 1380,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-tenggiri.glb",
+      "bytes": 82692,
+      "sha256": "816890f0c1281bcdda08c382cbcc17a5f602ad9cc7fa600e0f0f1d7ea48af08d",
+      "triangles": 2724,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-terbang.glb",
+      "bytes": 44284,
+      "sha256": "092a6afe1bf2f4c15e1ad223e3db3699398f65319ac1976c20f0b6add98b8bd7",
+      "triangles": 1380,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-tuna.glb",
+      "bytes": 44260,
+      "sha256": "8398c6935fe9240a189dbba69a2c613e836e5b6d06a3126a86e776efea42cfbd",
+      "triangles": 1380,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-tv.glb",
+      "bytes": 60736,
+      "sha256": "ec7af4f06647bd8a45774695d34e1e8707fc91541f0e2c0a5fb188c745305a5a",
+      "triangles": 1652,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/catch-udang.glb",
+      "bytes": 72656,
+      "sha256": "9386ce6fda4592322361b697fc44637c92416e2b716d23161d24b84bcb64b4c5",
+      "triangles": 2536,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/coconut-palm.glb",
+      "bytes": 265612,
+      "sha256": "cf9877885928b81bd6d1b7e006973ae9b334c78323f8372bd728bb36fd416682",
+      "triangles": 4206,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/dolphin.glb",
+      "bytes": 6424,
+      "sha256": "86f4e6bb79a5cbb825920de927c34bed36d9cb22386cc47082aea742712462bb",
+      "triangles": 229,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/fisherman.glb",
+      "bytes": 3100688,
+      "sha256": "cd9f17a4c25938d3a6bcb71e0aade92ce1a6f5dff7911dc5612caae5e436c11e",
+      "triangles": 6999,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/fishing-pier.glb",
+      "bytes": 2789172,
+      "sha256": "296540ce99b94f0afdd8e08ed551408c8461f69584805414a7a670f1312b9fc5",
+      "triangles": 5960,
+      "animations": 0,
+      "provenance": "Original Blender geometry with Rodin teak texture; provider texture rights confirmation required"
+    },
+    {
+      "path": "assets/models/government-outpost.glb",
+      "bytes": 2710108,
+      "sha256": "cd9fdce3ade2ef77751c9734c8d7b67eb7401af80ec10b7ba4dd29e41964dfb3",
+      "triangles": 4568,
+      "animations": 0,
+      "provenance": "Original Blender geometry with Rodin teak texture; provider texture rights confirmation required"
+    },
+    {
+      "path": "assets/models/harbor-pavilion.glb",
+      "bytes": 2772144,
+      "sha256": "7850f1dba5ac0b06f4cc3d8b7802866a6aba46c7134103f42076f6324438f282",
+      "triangles": 5564,
+      "animations": 0,
+      "provenance": "Original Blender geometry with Rodin teak texture; provider texture rights confirmation required"
+    },
+    {
+      "path": "assets/models/jetski.glb",
+      "bytes": 27964,
+      "sha256": "7c7ee374cbea300ed9de9ef575a565c4c7198520db60059518b5ef3b19f3ee0b",
+      "triangles": 668,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/jukung.glb",
+      "bytes": 8633392,
+      "sha256": "e45e338abab0af482eff34ea8f0e8f9359c3856e90ecf6553f082ec1c4cd2084",
+      "triangles": 33511,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/karst.glb",
+      "bytes": 4109652,
+      "sha256": "630bf147d890107bb501a2ec277783fac3395909b4c7d4fba1b056be20b532d4",
+      "triangles": 1799,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/kucing.glb",
+      "bytes": 3109256,
+      "sha256": "04d1a643582907fce97dd12ec7ed0fdb93ef9f9d02db32334d4f797addd172c2",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/macaque.glb",
+      "bytes": 489936,
+      "sha256": "540dc6ff7fcf1c5c35a8cf1fff62d9f30812577b8825291e1c97efdb484f0d8c",
+      "triangles": 4200,
+      "animations": 2,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/ojan.glb",
+      "bytes": 3405488,
+      "sha256": "78bad0086a7ecde8bc82ed5c86244e09a7a02d19e62b10e244bcf5b74aefca45",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/ojol.glb",
+      "bytes": 2737388,
+      "sha256": "e17028118b6d9ee95d0251d9d202ae672999ffc952fef256227c57023e3f2b78",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/pendaki.glb",
+      "bytes": 3076968,
+      "sha256": "df1b956da3a60ee07a57b43ebd22bd2b91b4c7f3b76019f28995a74ebdaa3c93",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/raft-house.glb",
+      "bytes": 2688212,
+      "sha256": "4204a18c0ad6284629f3faa1dd04938250564dc06e75ff81307c83dbe181000d",
+      "triangles": 4432,
+      "animations": 0,
+      "provenance": "Original Blender geometry with Rodin teak texture; provider texture rights confirmation required"
+    },
+    {
+      "path": "assets/models/reef-fish.glb",
+      "bytes": 13936,
+      "sha256": "e78dd72ee50d43e2f6980e0cb89a8bc913423bebdac69d3b1c94f95990cb4322",
+      "triangles": 218,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/rina.glb",
+      "bytes": 2730588,
+      "sha256": "b58f774a3187a790f1888f6690640c177f8ab46aceb7592e42c4283f51e8b3d9",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/robot.glb",
+      "bytes": 3463924,
+      "sha256": "05c1cfd9121e9a6d99c2e9b625b8d8b818f84506edf2268af646bb7cea9436aa",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/satpam.glb",
+      "bytes": 2829072,
+      "sha256": "a1f40abc86e161aead7134a6a5fa9c3018ecb344de006d214dc519bbfcc2dbd3",
+      "triangles": 7000,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/seabird.glb",
+      "bytes": 11528,
+      "sha256": "1e6cda57dc9f26d9604aad2ee1df7ee9ecbcc62da848954f3b675e49e5dbfb50",
+      "triangles": 214,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/surfboard.glb",
+      "bytes": 7148,
+      "sha256": "cbe8b2e7156eb40a30b02719ee3c84e01a979f2e1c8f1e9f8c41641cadfeb042",
+      "triangles": 235,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/tono.glb",
+      "bytes": 2510800,
+      "sha256": "ce3694e5cfe22749b0f328b6e31f90c91139bbfff0a3cec781c18a021950b869",
+      "triangles": 6999,
+      "animations": 3,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/models/tournament-trophy.glb",
+      "bytes": 44736,
+      "sha256": "7709c461a6025fd87afd9f30ac6688998097c09c872d90c6c8dc9da41a89201c",
+      "triangles": 676,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/tuna.glb",
+      "bytes": 90524,
+      "sha256": "8d10a308976ce8afa45393810df17b0ab39f8059c3474baf1b685741bda80112",
+      "triangles": 677,
+      "animations": 1,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/models/wild-undergrowth.glb",
+      "bytes": 481720,
+      "sha256": "ad9b4649aba8f49608c09b4336ef5e478679cb7a5b34e10e99b04e477b8184e9",
+      "triangles": 2600,
+      "animations": 0,
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/textures/coral-sand.png",
+      "bytes": 2557952,
+      "sha256": "2df9ffab6bcab0c660194fad65a4707b27a2e9fb5848ee141c4b91ec277bd37d",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/textures/jungle-floor.jpg",
+      "bytes": 432130,
+      "sha256": "509c943a981faadb3081f09566cf14e5fccb2fb4ed93bc8e43406c2585fb4619",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/textures/nusantara-sky-scaled.png",
+      "bytes": 12330,
+      "sha256": "cc4745163e61ab84ace28ea2f56362203d4ad78311772017f562f2a78a271c84",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/textures/nusantara-sky.hdr",
+      "bytes": 530538,
+      "sha256": "d889765879006e9ea31891db0a275fd4dbef3209f870b4ceecaf03d10d331133",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/textures/weathered-teak.png",
+      "bytes": 2364238,
+      "sha256": "6888fa014f615958d6552102567c2b34c6087df7d0d4b0db1f1f61e51574b45f",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/textures/wet-rock.jpg",
+      "bytes": 238244,
+      "sha256": "9c2f3301666efdd00d6e84c0ff378a9ca5c63e593a4c07746dff256b650f0eda",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/ability.wav",
+      "bytes": 35324,
+      "sha256": "137232612b4197c13e34ff2193f4c510f6419e13bf89946680d3e6f69f309e74",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/birds.wav",
+      "bytes": 529244,
+      "sha256": "30b6d67988c4517e70677c7914c63b6d1271fd906e3e9a3131d15d825351b171",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/bite.wav",
+      "bytes": 19888,
+      "sha256": "2ada780fe6e29757ff3b85ca6ccd34ba440613384fd03ae104d9035a1490edb0",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/boss-theme.wav",
+      "bytes": 661544,
+      "sha256": "f34859477356817a31d7a96fbce7bea58a4d2b9af1ee58a9bfad06a00d690d23",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/cast.wav",
+      "bytes": 17684,
+      "sha256": "1e14e9e67362066fa1aa7f3ca9b96029bcbfc11f1c7ab78122ac887021af9186",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/catch.wav",
+      "bytes": 48554,
+      "sha256": "30ee71d83a058d394cd8ac18eee454c2d265c4bde474ba603f6b0433d6aee6d3",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/dj-theme.wav",
+      "bytes": 705644,
+      "sha256": "a8ccfd36a89ef6c0249e46273a61c2229bd7818f89c0068abcb2708474ad7349",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/escape.wav",
+      "bytes": 26504,
+      "sha256": "d3d907ea96872a215af42d9f422b2b0e850f1d7fcce23aa40484ce14b4959b6f",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/island-theme.wav",
+      "bytes": 962224,
+      "sha256": "08992a72cbe97fd0cb33a99818b023042a85ee4bb8c1a77b819238a0d1e525f8",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/night.wav",
+      "bytes": 441044,
+      "sha256": "8571b5386c13c9e577c8fbf0c805da1d526b900d2f0cb0aee2a46380fe6cc8c0",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/rain.wav",
+      "bytes": 529244,
+      "sha256": "3963bd2bd0363bfbffc2f89f3d676c9f7a7177f673ae8caac536db87c1cbd77e",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-ampat.wav",
+      "bytes": 920390,
+      "sha256": "331b4b12023d408fa94f358c6665b72b36e0a53c6f77f0f07df9de698e0429ad",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-awan.wav",
+      "bytes": 1245220,
+      "sha256": "3d9f23491ed874ed64f32019a32a27dd28d8fadcbe5944ea9b7f7d4d294519f0",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-dimensi.wav",
+      "bytes": 882044,
+      "sha256": "6b0f7e9706d8e23f841979b99af751c11192a9b377ba1e3abd87bdff602baba1",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-gua.wav",
+      "bytes": 1323044,
+      "sha256": "00ec48fd73ca64a95972a7b21dbdfeb580de8194d9c635e0c71c74191163bf12",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-gunung.wav",
+      "bytes": 784044,
+      "sha256": "3468e2c46daa399d9d6840d76deeae7ce53056fab3c731bfdf775d6e35213df8",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-jakarta.wav",
+      "bytes": 846764,
+      "sha256": "0cd55b9c73ddcf5f4f864784b80e4d73209543d0f330978e02bf00bf930b1187",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-kalimantan.wav",
+      "bytes": 984602,
+      "sha256": "2162fb07294932d48327876570ce04cddddcfef2308ce539945d859f62043326",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-kelimutu.wav",
+      "bytes": 1085582,
+      "sha256": "ac1b6982e7dc322951798890a026bd9168201544ee4d3dee381a7ad4f0e8f9f4",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-kristal.wav",
+      "bytes": 1209644,
+      "sha256": "d794822cdee50ade121405634bff274aa113c1219ac813ab84fe54db05e825f0",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-kubangan.wav",
+      "bytes": 814196,
+      "sha256": "3f5af11d1e2818815876de4bbc5cff299824f651cba614922bee762215fd07c2",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-selatan.wav",
+      "bytes": 1008044,
+      "sha256": "db3a13ba2bceb6b994d409b09db1b8a5bbc7205e2a07ed15bac4bd6ffcc387eb",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-tambang.wav",
+      "bytes": 1114148,
+      "sha256": "35f128da37a8839213d0c5c019b096c4709fcbd3b7ca318df56ab4b3611e3216",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-terjun.wav",
+      "bytes": 1058444,
+      "sha256": "85ef52fc5b35f4def82b2b77fd449a8e8fd9b16e31ab01a91fcf058a170039f2",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/region-toba.wav",
+      "bytes": 1176044,
+      "sha256": "804fd38e52c1889bd8f8d50912b5d8096cbf060f239177548de7247403f24f29",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/ui.wav",
+      "bytes": 5336,
+      "sha256": "442938c9bf1fbe914767deb75f4963359ff52451867630955517d55f2960bf33",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/audio/water.wav",
+      "bytes": 529244,
+      "sha256": "d06a32ec4638505f35b2d7067678bf3e44228fdeff086a608f629d30c63df3be",
+      "provenance": "Original project asset; editable source in assets/sources"
+    },
+    {
+      "path": "assets/art/game-icon-256.png",
+      "bytes": 113086,
+      "sha256": "e89982dd45ef75d9b0441467d52614c08e43e7112b1d1093f8f313b453b64aa4",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/game-icon.icns",
+      "bytes": 2676162,
+      "sha256": "11d4909f5bb20196fe1dcc86de253f9d53c14de42b701c0010e3e2e2b12a10d9",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/game-icon.ico",
+      "bytes": 163073,
+      "sha256": "7dd603b7240e31ea0031c8e5dc679bb991f38f46f6fe93df1ce5f7a8e01a948a",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/game-icon.png",
+      "bytes": 1364495,
+      "sha256": "8bebf0c2855732faee3898839c1e547acda0149bb940da1522a1d1eb85959f73",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/harbor-keyart.png",
+      "bytes": 1929635,
+      "sha256": "a77705a1d69418cd2517f1b34e86bc8c90c9ab7cbb7d9db7dce6b42b3d913113",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/launch-voyage.jpg",
+      "bytes": 138439,
+      "sha256": "7c04f54be20a59a3d95d41a65d32810a0d3656a05065c73bb1e4494c1665a2a3",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/loading-myth.jpg",
+      "bytes": 103039,
+      "sha256": "021b801cfcbed0ea0a1720556f41fa705679bceba4a79b05123313d04aa4df86",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/loading-reef.jpg",
+      "bytes": 220752,
+      "sha256": "938f0da30c651867e027ff7c567b9624b92e4100fc3137fe1aee41bb3a565a75",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
+      "path": "assets/art/loading-river.jpg",
+      "bytes": 178166,
+      "sha256": "9a2b405fc57d21685a8347eb4552dfdda7fb52e79f1df9e667f2feec30d8ab6b",
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    }
+  ],
+  "totalBytes": 128754051,
+  "packages": [
+    {
+      "id": "Avalonia",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.Angle.Windows.Natives",
+      "version": "2.1.27548.20260419",
+      "license": "LICENSE (license file)",
+      "url": "https://avaloniaui.net/"
+    },
+    {
+      "id": "Avalonia.BuildServices",
+      "version": "11.3.2",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/"
+    },
+    {
+      "id": "Avalonia.Desktop",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.FreeDesktop",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.FreeDesktop.AtSpi",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.HarfBuzz",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.Native",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.Remote.Protocol",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.Skia",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.Themes.Fluent",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.Win32",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "Avalonia.X11",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://avaloniaui.net/?utm_source=nuget&utm_medium=referral&utm_content=project_homepage_link"
+    },
+    {
+      "id": "CommunityToolkit.Mvvm",
+      "version": "8.4.2",
+      "license": "MIT",
+      "url": "https://github.com/CommunityToolkit/dotnet"
+    },
+    {
+      "id": "coverlet.collector",
+      "version": "6.0.4",
+      "license": "MIT",
+      "url": "https://github.com/coverlet-coverage/coverlet"
+    },
+    {
+      "id": "HarfBuzzSharp",
+      "version": "8.3.1.3",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "HarfBuzzSharp.NativeAssets.Linux",
+      "version": "8.3.1.3",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "HarfBuzzSharp.NativeAssets.macOS",
+      "version": "8.3.1.3",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "HarfBuzzSharp.NativeAssets.WebAssembly",
+      "version": "8.3.1.3",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "HarfBuzzSharp.NativeAssets.Win32",
+      "version": "8.3.1.3",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "MicroCom.Runtime",
+      "version": "0.11.6",
+      "license": "MIT",
+      "url": ""
+    },
+    {
+      "id": "Microsoft.CodeCoverage",
+      "version": "17.14.1",
+      "license": "MIT",
+      "url": "https://github.com/microsoft/vstest"
+    },
+    {
+      "id": "Microsoft.NET.Test.Sdk",
+      "version": "17.14.1",
+      "license": "MIT",
+      "url": "https://github.com/microsoft/vstest"
+    },
+    {
+      "id": "Microsoft.TestPlatform.ObjectModel",
+      "version": "17.14.1",
+      "license": "MIT",
+      "url": "https://github.com/microsoft/vstest"
+    },
+    {
+      "id": "Microsoft.TestPlatform.TestHost",
+      "version": "17.14.1",
+      "license": "MIT",
+      "url": "https://github.com/microsoft/vstest"
+    },
+    {
+      "id": "Newtonsoft.Json",
+      "version": "13.0.3",
+      "license": "MIT",
+      "url": "https://www.newtonsoft.com/json"
+    },
+    {
+      "id": "ReactiveUI",
+      "version": "25.1.0",
+      "license": "MIT",
+      "url": "https://reactiveui.net/"
+    },
+    {
+      "id": "ReactiveUI.Avalonia",
+      "version": "12.1.4",
+      "license": "MIT",
+      "url": "https://reactiveui.net/"
+    },
+    {
+      "id": "ReactiveUI.Binding",
+      "version": "8.7.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/ReactiveUI.Binding.SourceGenerators"
+    },
+    {
+      "id": "ReactiveUI.Binding.Avalonia",
+      "version": "8.7.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/ReactiveUI.Binding.SourceGenerators"
+    },
+    {
+      "id": "ReactiveUI.Core",
+      "version": "25.1.0",
+      "license": "MIT",
+      "url": "https://reactiveui.net/"
+    },
+    {
+      "id": "ReactiveUI.Disposables",
+      "version": "8.4.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/Primitives"
+    },
+    {
+      "id": "ReactiveUI.Primitives",
+      "version": "8.4.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/Primitives"
+    },
+    {
+      "id": "ReactiveUI.Primitives.Avalonia",
+      "version": "8.4.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/Primitives"
+    },
+    {
+      "id": "ReactiveUI.Primitives.Core",
+      "version": "8.4.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/Primitives"
+    },
+    {
+      "id": "ReactiveUI.SourceGenerators",
+      "version": "4.2.0",
+      "license": "MIT",
+      "url": "https://reactiveui.net/"
+    },
+    {
+      "id": "SkiaSharp",
+      "version": "3.119.4",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "SkiaSharp.NativeAssets.Linux",
+      "version": "3.119.4",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "SkiaSharp.NativeAssets.macOS",
+      "version": "3.119.4",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "SkiaSharp.NativeAssets.WebAssembly",
+      "version": "3.119.4",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "SkiaSharp.NativeAssets.Win32",
+      "version": "3.119.4",
+      "license": "MIT",
+      "url": "https://go.microsoft.com/fwlink/?linkid=868515"
+    },
+    {
+      "id": "Splat",
+      "version": "21.0.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/splat/"
+    },
+    {
+      "id": "Splat.Builder",
+      "version": "21.0.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/splat/"
+    },
+    {
+      "id": "Splat.Core",
+      "version": "21.0.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/splat/"
+    },
+    {
+      "id": "Splat.Logging",
+      "version": "21.0.0",
+      "license": "MIT",
+      "url": "https://github.com/reactiveui/splat/"
+    },
+    {
+      "id": "ThreeNet",
+      "version": "0.12.0",
+      "license": "MIT",
+      "url": "https://github.com/DotNetVibeCoderz/Vibe_Graphics/tree/main/ThreeNet"
+    },
+    {
+      "id": "ThreeNet.Avalonia",
+      "version": "0.12.0",
+      "license": "MIT",
+      "url": "https://github.com/DotNetVibeCoderz/Vibe_Graphics/tree/main/ThreeNet"
+    },
+    {
+      "id": "ThreeNet.Native",
+      "version": "0.12.0",
+      "license": "MIT",
+      "url": "https://github.com/DotNetVibeCoderz/Vibe_Graphics/tree/main/ThreeNet"
+    },
+    {
+      "id": "Tmds.DBus.Protocol",
+      "version": "0.94.1",
+      "license": "MIT",
+      "url": ""
+    },
+    {
+      "id": "xunit",
+      "version": "2.9.3",
+      "license": "Apache-2.0",
+      "url": ""
+    },
+    {
+      "id": "xunit.abstractions",
+      "version": "2.0.3",
+      "license": "REVIEW REQUIRED",
+      "url": "https://github.com/xunit/xunit"
+    },
+    {
+      "id": "xunit.analyzers",
+      "version": "1.18.0",
+      "license": "Apache-2.0",
+      "url": ""
+    },
+    {
+      "id": "xunit.assert",
+      "version": "2.9.3",
+      "license": "Apache-2.0",
+      "url": ""
+    },
+    {
+      "id": "xunit.core",
+      "version": "2.9.3",
+      "license": "Apache-2.0",
+      "url": ""
+    },
+    {
+      "id": "xunit.extensibility.core",
+      "version": "2.9.3",
+      "license": "Apache-2.0",
+      "url": ""
+    },
+    {
+      "id": "xunit.extensibility.execution",
+      "version": "2.9.3",
+      "license": "Apache-2.0",
+      "url": ""
+    },
+    {
+      "id": "xunit.runner.visualstudio",
+      "version": "3.1.4",
+      "license": "Apache-2.0",
+      "url": ""
+    }
+  ]
+}

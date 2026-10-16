@@ -1,0 +1,45 @@
+{
+  "RecordedAt": "2026-10-15T13:00:06.4910848+00:00",
+  "Stages": [
+    {
+      "Stage": "process-main",
+      "ElapsedMs": 1.8358
+    },
+    {
+      "Stage": "window-constructor",
+      "ElapsedMs": 708.2242
+    },
+    {
+      "Stage": "window-opened",
+      "ElapsedMs": 1154.3089
+    },
+    {
+      "Stage": "world-construction-start",
+      "ElapsedMs": 1154.7923
+    },
+    {
+      "Stage": "world-construction-end",
+      "ElapsedMs": 1469.6426
+    },
+    {
+      "Stage": "world-and-ui-ready",
+      "ElapsedMs": 1500.9944
+    },
+    {
+      "Stage": "audio-and-input-ready",
+      "ElapsedMs": 1526.486
+    },
+    {
+      "Stage": "first-frame-start",
+      "ElapsedMs": 1661.5735
+    },
+    {
+      "Stage": "renderer-created",
+      "ElapsedMs": 5796.7387
+    },
+    {
+      "Stage": "first-frame-readback",
+      "ElapsedMs": 33498.4811
+    }
+  ]
+}

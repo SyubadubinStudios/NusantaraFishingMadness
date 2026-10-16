@@ -1,0 +1,112 @@
+name: Build and release installers
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to release
+        required: true
+        default: v0.3.0-preview.1
+permissions:
+  contents: read
+jobs:
+  installers:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            runtime: win-x64
+          - os: ubuntu-24.04
+            runtime: linux-x64
+          - os: macos-latest
+            runtime: osx-arm64
+          - os: macos-latest
+            runtime: osx-x64
+    runs-on: ${{ matrix.os }}
+    env:
+      RELEASE_TAG: ${{ inputs.tag }}
+      TARGET_RUNTIME: ${{ matrix.runtime }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+      - name: Fetch runtime models
+        run: git lfs pull --include="assets/models/**" --exclude=""
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Check tag matches project version
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content Directory.Build.props
+          if ($env:RELEASE_TAG -ne "v$($props.Project.PropertyGroup.Version)") { throw 'Tag/version mismatch.' }
+      - run: dotnet restore NusantaraFishingMadness.slnx --locked-mode
+      - run: dotnet build NusantaraFishingMadness.slnx -c Release --no-restore
+      - run: dotnet test NusantaraFishingMadness.slnx -c Release --no-build
+      - run: python tools/validate-visual-assets.py
+      - run: dotnet run --project tools/NusantaraFishing.Acceptance -c Release --no-build -- --delay-ms 100
+      - name: Install Windows compiler
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          if (!(Test-Path 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe')) { choco install innosetup --yes --no-progress }
+      - name: Publish and build installer
+        shell: pwsh
+        run: |
+          ./tools/publish.ps1 -Runtime $env:TARGET_RUNTIME
+          if ($LASTEXITCODE -ne 0) { throw 'Publish failed.' }
+          $package = (Get-ChildItem artifacts/packages -Directory | Select-Object -First 1).FullName
+          python tools/build-installers.py --package $package --runtime $env:TARGET_RUNTIME --version $env:RELEASE_TAG
+          if ($LASTEXITCODE -ne 0) { throw 'Installer build failed.' }
+      - name: Verify Windows installer
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./tools/verify-installer.ps1 -Installer (Get-ChildItem artifacts/installers/*-setup.exe).FullName
+      - name: Verify Linux installation
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ./artifacts/installers/*.deb
+          test -x /opt/nusantara-fishing-madness/NusantaraFishing.Desktop
+          test -f /usr/share/applications/nusantara-fishing-madness.desktop
+          sudo apt-get remove -y nusantara-fishing-madness
+      - name: Verify macOS installation
+        if: runner.os == 'macOS'
+        run: |
+          sudo installer -pkg artifacts/installers/*.pkg -target /
+          test -x '/Applications/Nusantara Fishing Madness.app/Contents/MacOS/NusantaraFishing.Desktop'
+          codesign --verify --deep --strict '/Applications/Nusantara Fishing Madness.app'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer-${{ matrix.runtime }}
+          path: |
+            artifacts/installers/*.exe
+            artifacts/installers/*.deb
+            artifacts/installers/*.pkg
+            artifacts/installers/*.sha256
+          if-no-files-found: error
+  release:
+    needs: installers
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: installer-*
+          merge-multiple: true
+          path: artifacts/release
+      - name: Verify checksums and publish preview
+        shell: bash
+        run: |
+          (cd artifacts/release && cat *.sha256 > SHA256SUMS && sha256sum -c SHA256SUMS)
+          gh release create "$RELEASE_TAG" artifacts/release/*.exe artifacts/release/*.deb artifacts/release/*.pkg artifacts/release/SHA256SUMS --verify-tag --prerelease --title "Nusantara Fishing Madness $RELEASE_TAG" --notes-file "docs/releases/$RELEASE_TAG.md"

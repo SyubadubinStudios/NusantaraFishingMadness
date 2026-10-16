@@ -1,0 +1,29 @@
+{
+  "Passed": true,
+  "Clients": 4,
+  "InjectedClientDelayMs": 100,
+  "Seconds": 27.6850846,
+  "OperatingSystem": "Microsoft Windows NT 10.0.26200.0",
+  "Runtime": "10.0.12",
+  "Checks": [
+    "four independent clients joined",
+    "co-op capacity rejects fifth client",
+    "protocol mismatch rejected over HTTP",
+    "online identity starts with server-owned progress",
+    "movement replicated to another client",
+    "disconnect/reconnect resumes identity during encounter",
+    "fishing phases replicated to peers",
+    "four clients defeated shared boss with injected delay",
+    "exactly one boss reward for client 0",
+    "exactly one boss reward for client 1",
+    "exactly one boss reward for client 2",
+    "exactly one boss reward for client 3",
+    "replayed command cannot duplicate reward",
+    "server-owned tournament scores match catches",
+    "restart preserves one reward for client 0",
+    "restart preserves one reward for client 1",
+    "restart preserves one reward for client 2",
+    "restart preserves one reward for client 3",
+    "ended tournament prize is paid once"
+  ]
+}

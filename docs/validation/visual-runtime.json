@@ -1,0 +1,21 @@
+{
+  "Date": "2026-10-16",
+  "Platform": "Windows x64 / Intel UHD 620 / DirectX 12",
+  "ReleaseBuildWarnings": 0,
+  "ReleaseBuildErrors": 0,
+  "CoreTestsPassed": 40,
+  "DesktopTestsPassed": 5,
+  "ExportedModelsValidated": 14,
+  "HumanBonesPerRig": 16,
+  "HumanClips": ["Idle", "Walk", "Fishing"],
+  "WorldTourAfterCacheFix": true,
+  "Regions": ["selatan", "ampat", "toba", "kelimutu", "kalimantan", "jakarta", "kubangan", "terjun", "gua", "tambang", "awan", "gunung", "kristal", "dimensi"],
+  "ReturnedToCoastHoursCaptured": [6, 12, 18, 0],
+  "CharacterSwitchingPassed": true,
+  "FishingLandedPassed": true,
+  "OriginalAudioMixerPassed": true,
+  "SettingsLocalizationPassed": true,
+  "BalancedProfile": "../performance/visual-balanced.json",
+  "LowPowerProfile": "../performance/visual-low-power.json",
+  "Notes": "An earlier tour completed without crashing but showed stale cross-scene meshes. The second tour verified the cache compatibility fix visually. Performance is a short coastal sample, not a fourteen-region FPS guarantee."
+}

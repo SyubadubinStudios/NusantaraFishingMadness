@@ -1,0 +1,39 @@
+name: Build unsigned preview packages
+on:
+  workflow_dispatch:
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            runtime: win-x64
+          - os: ubuntu-latest
+            runtime: linux-x64
+          - os: macos-latest
+            runtime: osx-arm64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch runtime models
+        run: git lfs pull --include="assets/models/**" --exclude=""
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: dotnet restore NusantaraFishingMadness.slnx --locked-mode
+      - run: python tools/audit-assets.py
+      - name: Publish self-contained desktop and server
+        shell: pwsh
+        run: ./tools/publish.ps1 -Runtime ${{ matrix.runtime }}
+      - name: Verify Windows installation
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./tools/verify-package.ps1 -Package (Get-ChildItem artifacts/packages -Directory | Select-Object -First 1).FullName
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unsigned-preview-${{ matrix.runtime }}
+          path: artifacts/packages/*.zip

@@ -1,0 +1,16 @@
+{
+  "RecordedAt": "2026-10-15T12:58:21.120029+00:00",
+  "Version": "0.2.0-preview.1",
+  "Runtime": "win-x64",
+  "Package": "win-x64-20261015-195458",
+  "VerifiedFiles": 715,
+  "ZipSha256": "878e43c2a2ceb86dbc78f52bfe47a66414bdfddd77d338ef471f8b5ae8e883c7",
+  "Signed": false,
+  "IsolatedInstallUninstallPassed": true,
+  "UnknownFilePreserved": true,
+  "PackagedNativeMultiplayerPassed": true,
+  "TextInputIsolationPassed": true,
+  "NativeVirtualGamepadPassed": true,
+  "LocalOnlineSeparationPassed": true,
+  "CrossPlatformRuntimeVerified": false
+}

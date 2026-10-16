@@ -1,0 +1,614 @@
+{
+  "checks": "GLB structure, isolated scenes, embedded images, character budgets, creature Swim clips and normalized skin weights",
+  "assets": [
+    {
+      "asset": "bakso.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 2686736
+    },
+    {
+      "asset": "bambang.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 2674076
+    },
+    {
+      "asset": "banana-plant.glb",
+      "triangles": 2999,
+      "animations": [],
+      "bytes": 462088
+    },
+    {
+      "asset": "branching-coral.glb",
+      "triangles": 924,
+      "animations": [],
+      "bytes": 59780
+    },
+    {
+      "asset": "catch-arwana.glb",
+      "triangles": 2724,
+      "animations": [],
+      "bytes": 82684
+    },
+    {
+      "asset": "catch-atm.glb",
+      "triangles": 432,
+      "animations": [],
+      "bytes": 30732
+    },
+    {
+      "asset": "catch-batik.glb",
+      "triangles": 5544,
+      "animations": [],
+      "bytes": 1166520
+    },
+    {
+      "asset": "catch-belut.glb",
+      "triangles": 1252,
+      "animations": [],
+      "bytes": 35984
+    },
+    {
+      "asset": "catch-biawak.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1223584
+    },
+    {
+      "asset": "catch-boss-ampat.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1120512
+    },
+    {
+      "asset": "catch-boss-awan.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1053472
+    },
+    {
+      "asset": "catch-boss-dimensi.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1063616
+    },
+    {
+      "asset": "catch-boss-gua.glb",
+      "triangles": 4199,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1269664
+    },
+    {
+      "asset": "catch-boss-gunung.glb",
+      "triangles": 1252,
+      "animations": [],
+      "bytes": 36008
+    },
+    {
+      "asset": "catch-boss-jakarta.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1223600
+    },
+    {
+      "asset": "catch-boss-kalimantan.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1223612
+    },
+    {
+      "asset": "catch-boss-kelimutu.glb",
+      "triangles": 4199,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1269680
+    },
+    {
+      "asset": "catch-boss-kristal.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1120592
+    },
+    {
+      "asset": "catch-boss-kubangan.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1063620
+    },
+    {
+      "asset": "catch-boss-selatan.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1120512
+    },
+    {
+      "asset": "catch-boss-tambang.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1063616
+    },
+    {
+      "asset": "catch-boss-terjun.glb",
+      "triangles": 1380,
+      "animations": [],
+      "bytes": 44308
+    },
+    {
+      "asset": "catch-boss-toba.glb",
+      "triangles": 4199,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1269668
+    },
+    {
+      "asset": "catch-buaya.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1223580
+    },
+    {
+      "asset": "catch-disco.glb",
+      "triangles": 4199,
+      "animations": [],
+      "bytes": 1057132
+    },
+    {
+      "asset": "catch-dj.glb",
+      "triangles": 4708,
+      "animations": [],
+      "bytes": 1136620
+    },
+    {
+      "asset": "catch-dugong.glb",
+      "triangles": 4199,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 818056
+    },
+    {
+      "asset": "catch-gabus.glb",
+      "triangles": 1380,
+      "animations": [],
+      "bytes": 44280
+    },
+    {
+      "asset": "catch-ghost.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1063660
+    },
+    {
+      "asset": "catch-gurame.glb",
+      "triangles": 1604,
+      "animations": [],
+      "bytes": 50432
+    },
+    {
+      "asset": "catch-gurita.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1120508
+    },
+    {
+      "asset": "catch-hiu.glb",
+      "triangles": 2724,
+      "animations": [],
+      "bytes": 82684
+    },
+    {
+      "asset": "catch-kasur.glb",
+      "triangles": 772,
+      "animations": [],
+      "bytes": 57292
+    },
+    {
+      "asset": "catch-kepiting.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1069764
+    },
+    {
+      "asset": "catch-kerapu.glb",
+      "triangles": 2724,
+      "animations": [],
+      "bytes": 82696
+    },
+    {
+      "asset": "catch-keris.glb",
+      "triangles": 228,
+      "animations": [],
+      "bytes": 12556
+    },
+    {
+      "asset": "catch-kodok.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1212488
+    },
+    {
+      "asset": "catch-kulkas.glb",
+      "triangles": 432,
+      "animations": [],
+      "bytes": 31624
+    },
+    {
+      "asset": "catch-kura.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1248592
+    },
+    {
+      "asset": "catch-lele.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1063592
+    },
+    {
+      "asset": "catch-lobster.glb",
+      "triangles": 2536,
+      "animations": [],
+      "bytes": 72632
+    },
+    {
+      "asset": "catch-lumba.glb",
+      "triangles": 1604,
+      "animations": [],
+      "bytes": 50468
+    },
+    {
+      "asset": "catch-mahkota.glb",
+      "triangles": 2016,
+      "animations": [],
+      "bytes": 56948
+    },
+    {
+      "asset": "catch-motor.glb",
+      "triangles": 944,
+      "animations": [],
+      "bytes": 65244
+    },
+    {
+      "asset": "catch-ninja.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1212488
+    },
+    {
+      "asset": "catch-patenggang.glb",
+      "triangles": 4199,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1269672
+    },
+    {
+      "asset": "catch-paus-kubangan.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1053484
+    },
+    {
+      "asset": "catch-penunggu.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1063604
+    },
+    {
+      "asset": "catch-peta.glb",
+      "triangles": 208,
+      "animations": [],
+      "bytes": 13064
+    },
+    {
+      "asset": "catch-peti.glb",
+      "triangles": 864,
+      "animations": [],
+      "bytes": 62996
+    },
+    {
+      "asset": "catch-phantom.glb",
+      "triangles": 4200,
+      "animations": [],
+      "bytes": 1120572
+    },
+    {
+      "asset": "catch-profesor.glb",
+      "triangles": 4308,
+      "animations": [],
+      "bytes": 1129172
+    },
+    {
+      "asset": "catch-radioaktif.glb",
+      "triangles": 4200,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1063692
+    },
+    {
+      "asset": "catch-raja.glb",
+      "triangles": 4199,
+      "animations": [
+        "Swim"
+      ],
+      "bytes": 1269652
+    },
+    {
+      "asset": "catch-roket.glb",
+      "triangles": 4199,
+      "animations": [],
+      "bytes": 1057056
+    },
+    {
+      "asset": "catch-sandal.glb",
+      "triangles": 196,
+      "animations": [],
+      "bytes": 11824
+    },
+    {
+      "asset": "catch-shadow.glb",
+      "triangles": 1380,
+      "animations": [],
+      "bytes": 44288
+    },
+    {
+      "asset": "catch-tenggiri.glb",
+      "triangles": 2724,
+      "animations": [],
+      "bytes": 82692
+    },
+    {
+      "asset": "catch-terbang.glb",
+      "triangles": 1380,
+      "animations": [],
+      "bytes": 44284
+    },
+    {
+      "asset": "catch-tuna.glb",
+      "triangles": 1380,
+      "animations": [],
+      "bytes": 44260
+    },
+    {
+      "asset": "catch-tv.glb",
+      "triangles": 1652,
+      "animations": [],
+      "bytes": 60736
+    },
+    {
+      "asset": "catch-udang.glb",
+      "triangles": 2536,
+      "animations": [],
+      "bytes": 72656
+    },
+    {
+      "asset": "coconut-palm.glb",
+      "triangles": 4206,
+      "animations": [],
+      "bytes": 265612
+    },
+    {
+      "asset": "dolphin.glb",
+      "triangles": 229,
+      "animations": [],
+      "bytes": 6424
+    },
+    {
+      "asset": "fisherman.glb",
+      "triangles": 6999,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 3100688
+    },
+    {
+      "asset": "fishing-pier.glb",
+      "triangles": 5960,
+      "animations": [],
+      "bytes": 2789172
+    },
+    {
+      "asset": "government-outpost.glb",
+      "triangles": 4568,
+      "animations": [],
+      "bytes": 2710108
+    },
+    {
+      "asset": "harbor-pavilion.glb",
+      "triangles": 5564,
+      "animations": [],
+      "bytes": 2772144
+    },
+    {
+      "asset": "jetski.glb",
+      "triangles": 668,
+      "animations": [],
+      "bytes": 27964
+    },
+    {
+      "asset": "jukung.glb",
+      "triangles": 33511,
+      "animations": [],
+      "bytes": 8633392
+    },
+    {
+      "asset": "karst.glb",
+      "triangles": 1799,
+      "animations": [],
+      "bytes": 4109652
+    },
+    {
+      "asset": "kucing.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 3109256
+    },
+    {
+      "asset": "macaque.glb",
+      "triangles": 4200,
+      "animations": [
+        "Walk",
+        "Idle"
+      ],
+      "bytes": 489936
+    },
+    {
+      "asset": "ojan.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 3405488
+    },
+    {
+      "asset": "ojol.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 2737388
+    },
+    {
+      "asset": "pendaki.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 3076968
+    },
+    {
+      "asset": "raft-house.glb",
+      "triangles": 4432,
+      "animations": [],
+      "bytes": 2688212
+    },
+    {
+      "asset": "reef-fish.glb",
+      "triangles": 218,
+      "animations": [],
+      "bytes": 13936
+    },
+    {
+      "asset": "rina.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 2730588
+    },
+    {
+      "asset": "robot.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 3463924
+    },
+    {
+      "asset": "satpam.glb",
+      "triangles": 7000,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 2829072
+    },
+    {
+      "asset": "seabird.glb",
+      "triangles": 214,
+      "animations": [],
+      "bytes": 11528
+    },
+    {
+      "asset": "surfboard.glb",
+      "triangles": 235,
+      "animations": [],
+      "bytes": 7148
+    },
+    {
+      "asset": "tono.glb",
+      "triangles": 6999,
+      "animations": [
+        "Idle",
+        "Walk",
+        "Fishing"
+      ],
+      "bytes": 2510800
+    },
+    {
+      "asset": "tournament-trophy.glb",
+      "triangles": 676,
+      "animations": [],
+      "bytes": 44736
+    },
+    {
+      "asset": "tuna.glb",
+      "triangles": 677,
+      "animations": [
+        "Tuna_rigAction"
+      ],
+      "bytes": 90524
+    },
+    {
+      "asset": "wild-undergrowth.glb",
+      "triangles": 2600,
+      "animations": [],
+      "bytes": 481720
+    }
+  ]
+}

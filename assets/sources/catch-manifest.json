@@ -1,0 +1,466 @@
+[
+  {
+    "id": "lele",
+    "name": "Lele",
+    "kind": "Fish",
+    "model": "catch-lele.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-catfish.glb"
+  },
+  {
+    "id": "gabus",
+    "name": "Gabus",
+    "kind": "Fish",
+    "model": "catch-gabus.glb",
+    "triangles": 1380,
+    "rodinSource": null
+  },
+  {
+    "id": "arwana",
+    "name": "Arwana",
+    "kind": "Fish",
+    "model": "catch-arwana.glb",
+    "triangles": 2724,
+    "rodinSource": null
+  },
+  {
+    "id": "tuna",
+    "name": "Tuna Sirip Kuning",
+    "kind": "Fish",
+    "model": "catch-tuna.glb",
+    "triangles": 1380,
+    "rodinSource": null
+  },
+  {
+    "id": "tenggiri",
+    "name": "Tenggiri",
+    "kind": "Fish",
+    "model": "catch-tenggiri.glb",
+    "triangles": 2724,
+    "rodinSource": null
+  },
+  {
+    "id": "kerapu",
+    "name": "Kerapu Karang",
+    "kind": "Fish",
+    "model": "catch-kerapu.glb",
+    "triangles": 2724,
+    "rodinSource": null
+  },
+  {
+    "id": "gurita",
+    "name": "Gurita Kampung",
+    "kind": "Cephalopod",
+    "model": "catch-gurita.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "batik",
+    "name": "Gurita Batik",
+    "kind": "Cephalopod",
+    "model": "catch-batik.glb",
+    "triangles": 5544,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "dj",
+    "name": "Gurita DJ",
+    "kind": "Cephalopod",
+    "model": "catch-dj.glb",
+    "triangles": 4708,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "profesor",
+    "name": "Gurita Profesor",
+    "kind": "Cephalopod",
+    "model": "catch-profesor.glb",
+    "triangles": 4308,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "disco",
+    "name": "Cumi Disco",
+    "kind": "Cephalopod",
+    "model": "catch-disco.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-squid.glb"
+  },
+  {
+    "id": "roket",
+    "name": "Cumi Roket",
+    "kind": "Cephalopod",
+    "model": "catch-roket.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-squid.glb"
+  },
+  {
+    "id": "kepiting",
+    "name": "Kepiting Petarung",
+    "kind": "Crustacean",
+    "model": "catch-kepiting.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-crab.glb"
+  },
+  {
+    "id": "lobster",
+    "name": "Lobster Sultan",
+    "kind": "Crustacean",
+    "model": "catch-lobster.glb",
+    "triangles": 2536,
+    "rodinSource": null
+  },
+  {
+    "id": "udang",
+    "name": "Udang Kristal",
+    "kind": "Crustacean",
+    "model": "catch-udang.glb",
+    "triangles": 2536,
+    "rodinSource": null
+  },
+  {
+    "id": "kodok",
+    "name": "Kodok Emas",
+    "kind": "Amphibian",
+    "model": "catch-kodok.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-frog.glb"
+  },
+  {
+    "id": "ninja",
+    "name": "Katak Ninja",
+    "kind": "Amphibian",
+    "model": "catch-ninja.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-frog.glb"
+  },
+  {
+    "id": "kura",
+    "name": "Kura-Kura Kuno",
+    "kind": "Reptile",
+    "model": "catch-kura.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-turtle.glb"
+  },
+  {
+    "id": "buaya",
+    "name": "Buaya Sungai",
+    "kind": "Reptile",
+    "model": "catch-buaya.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-crocodile.glb"
+  },
+  {
+    "id": "biawak",
+    "name": "Biawak Albino",
+    "kind": "Reptile",
+    "model": "catch-biawak.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-crocodile.glb"
+  },
+  {
+    "id": "lumba",
+    "name": "Lumba-Lumba Ceria",
+    "kind": "Conservation",
+    "model": "catch-lumba.glb",
+    "triangles": 1604,
+    "rodinSource": null
+  },
+  {
+    "id": "dugong",
+    "name": "Dugong Nusantara",
+    "kind": "Conservation",
+    "model": "catch-dugong.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-dugong.glb"
+  },
+  {
+    "id": "sandal",
+    "name": "Sandal Jepit Legendaris",
+    "kind": "Junk",
+    "model": "catch-sandal.glb",
+    "triangles": 196,
+    "rodinSource": null
+  },
+  {
+    "id": "kasur",
+    "name": "Kasur Terbang",
+    "kind": "Junk",
+    "model": "catch-kasur.glb",
+    "triangles": 772,
+    "rodinSource": null
+  },
+  {
+    "id": "kulkas",
+    "name": "Kulkas Misterius",
+    "kind": "Junk",
+    "model": "catch-kulkas.glb",
+    "triangles": 432,
+    "rodinSource": null
+  },
+  {
+    "id": "motor",
+    "name": "Motor Hilang",
+    "kind": "Junk",
+    "model": "catch-motor.glb",
+    "triangles": 944,
+    "rodinSource": null
+  },
+  {
+    "id": "atm",
+    "name": "ATM Tenggelam",
+    "kind": "Junk",
+    "model": "catch-atm.glb",
+    "triangles": 432,
+    "rodinSource": null
+  },
+  {
+    "id": "keris",
+    "name": "Keris Kuno",
+    "kind": "Artifact",
+    "model": "catch-keris.glb",
+    "triangles": 228,
+    "rodinSource": null
+  },
+  {
+    "id": "peti",
+    "name": "Peti VOC",
+    "kind": "Artifact",
+    "model": "catch-peti.glb",
+    "triangles": 864,
+    "rodinSource": null
+  },
+  {
+    "id": "mahkota",
+    "name": "Mahkota Kerajaan Laut",
+    "kind": "Artifact",
+    "model": "catch-mahkota.glb",
+    "triangles": 2016,
+    "rodinSource": null
+  },
+  {
+    "id": "peta",
+    "name": "Peta Rahasia Nusantara",
+    "kind": "Artifact",
+    "model": "catch-peta.glb",
+    "triangles": 208,
+    "rodinSource": null
+  },
+  {
+    "id": "radioaktif",
+    "name": "Lele Radioaktif",
+    "kind": "Mutant",
+    "model": "catch-radioaktif.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-catfish.glb"
+  },
+  {
+    "id": "gurame",
+    "name": "Gurame Bermata Tiga",
+    "kind": "Mutant",
+    "model": "catch-gurame.glb",
+    "triangles": 1604,
+    "rodinSource": null
+  },
+  {
+    "id": "belut",
+    "name": "Belut Listrik",
+    "kind": "Mutant",
+    "model": "catch-belut.glb",
+    "triangles": 1252,
+    "rodinSource": null
+  },
+  {
+    "id": "tv",
+    "name": "Ikan Televisi",
+    "kind": "Mutant",
+    "model": "catch-tv.glb",
+    "triangles": 1652,
+    "rodinSource": null
+  },
+  {
+    "id": "shadow",
+    "name": "Shadow Piranha",
+    "kind": "Shadow",
+    "model": "catch-shadow.glb",
+    "triangles": 1380,
+    "rodinSource": null
+  },
+  {
+    "id": "ghost",
+    "name": "Ghost Catfish",
+    "kind": "Shadow",
+    "model": "catch-ghost.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-catfish.glb"
+  },
+  {
+    "id": "phantom",
+    "name": "Phantom Octopus",
+    "kind": "Shadow",
+    "model": "catch-phantom.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "raja",
+    "name": "Ikan Raja Nusantara",
+    "kind": "Fish",
+    "model": "catch-raja.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-dragon.glb"
+  },
+  {
+    "id": "patenggang",
+    "name": "Ikan Naga Situ Patenggang",
+    "kind": "Fish",
+    "model": "catch-patenggang.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-dragon.glb"
+  },
+  {
+    "id": "penunggu",
+    "name": "Lele Penunggu Kubangan",
+    "kind": "Boss",
+    "model": "catch-penunggu.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-catfish.glb"
+  },
+  {
+    "id": "paus-kubangan",
+    "name": "Paus Kubangan",
+    "kind": "Boss",
+    "model": "catch-paus-kubangan.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-whale.glb"
+  },
+  {
+    "id": "hiu",
+    "name": "Hiu Karang Selatan",
+    "kind": "Conservation",
+    "model": "catch-hiu.glb",
+    "triangles": 2724,
+    "rodinSource": null
+  },
+  {
+    "id": "terbang",
+    "name": "Ikan Terbang",
+    "kind": "Fish",
+    "model": "catch-terbang.glb",
+    "triangles": 1380,
+    "rodinSource": null
+  },
+  {
+    "id": "boss-selatan",
+    "name": "Regional boss selatan",
+    "kind": "Boss",
+    "model": "catch-boss-selatan.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "boss-ampat",
+    "name": "Regional boss ampat",
+    "kind": "Boss",
+    "model": "catch-boss-ampat.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "boss-toba",
+    "name": "Regional boss toba",
+    "kind": "Boss",
+    "model": "catch-boss-toba.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-dragon.glb"
+  },
+  {
+    "id": "boss-kelimutu",
+    "name": "Regional boss kelimutu",
+    "kind": "Boss",
+    "model": "catch-boss-kelimutu.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-dragon.glb"
+  },
+  {
+    "id": "boss-kalimantan",
+    "name": "Regional boss kalimantan",
+    "kind": "Boss",
+    "model": "catch-boss-kalimantan.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-crocodile.glb"
+  },
+  {
+    "id": "boss-jakarta",
+    "name": "Regional boss jakarta",
+    "kind": "Boss",
+    "model": "catch-boss-jakarta.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-crocodile.glb"
+  },
+  {
+    "id": "boss-kubangan",
+    "name": "Regional boss kubangan",
+    "kind": "Boss",
+    "model": "catch-boss-kubangan.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-catfish.glb"
+  },
+  {
+    "id": "boss-terjun",
+    "name": "Regional boss terjun",
+    "kind": "Boss",
+    "model": "catch-boss-terjun.glb",
+    "triangles": 1380,
+    "rodinSource": null
+  },
+  {
+    "id": "boss-gua",
+    "name": "Regional boss gua",
+    "kind": "Boss",
+    "model": "catch-boss-gua.glb",
+    "triangles": 4199,
+    "rodinSource": "creature-dragon.glb"
+  },
+  {
+    "id": "boss-tambang",
+    "name": "Regional boss tambang",
+    "kind": "Boss",
+    "model": "catch-boss-tambang.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-catfish.glb"
+  },
+  {
+    "id": "boss-awan",
+    "name": "Regional boss awan",
+    "kind": "Boss",
+    "model": "catch-boss-awan.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-whale.glb"
+  },
+  {
+    "id": "boss-gunung",
+    "name": "Regional boss gunung",
+    "kind": "Boss",
+    "model": "catch-boss-gunung.glb",
+    "triangles": 1252,
+    "rodinSource": null
+  },
+  {
+    "id": "boss-kristal",
+    "name": "Regional boss kristal",
+    "kind": "Boss",
+    "model": "catch-boss-kristal.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-octopus.glb"
+  },
+  {
+    "id": "boss-dimensi",
+    "name": "Regional boss dimensi",
+    "kind": "Boss",
+    "model": "catch-boss-dimensi.glb",
+    "triangles": 4200,
+    "rodinSource": "creature-catfish.glb"
+  }
+]

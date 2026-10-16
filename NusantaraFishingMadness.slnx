@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NusantaraFishing.Core/NusantaraFishing.Core.csproj" />
+    <Project Path="src/NusantaraFishing.Desktop/NusantaraFishing.Desktop.csproj" />
+    <Project Path="src/NusantaraFishing.Server/NusantaraFishing.Server.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NusantaraFishing.Core.Tests/NusantaraFishing.Core.Tests.csproj" />
+    <Project Path="tests/NusantaraFishing.Desktop.Tests/NusantaraFishing.Desktop.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/NusantaraFishing.Acceptance/NusantaraFishing.Acceptance.csproj" />
+  </Folder>
+</Solution>
