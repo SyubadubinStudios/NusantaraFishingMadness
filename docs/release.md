@@ -14,7 +14,7 @@ The script publishes self-contained desktop and server binaries, assets and thir
 
 `uninstall.ps1` removes only manifest-recorded application files. User saves live separately under `%LOCALAPPDATA%/SyubadubinStudios/NusantaraFishingMadness` and are preserved. The verifier installs into a unique temporary directory without shell/registry integration and checks unknown-file preservation. Checksums detect accidental modification; authenticity requires a trusted signature.
 
-`publish.ps1 -Runtime linux-x64`, `osx-arm64` or `osx-x64` builds corresponding portable packages. These are packaging targets until tested on their operating systems. macOS app bundles, notarization and a Linux desktop integration installer remain release work.
+`publish.ps1 -Runtime linux-x64`, `osx-arm64` or `osx-x64` builds target-specific self-contained payloads. The `Build and release installers` GitHub Actions workflow wraps these as a Windows Setup EXE, Debian/Ubuntu DEB and Apple Silicon/Intel macOS PKGs, then validates installation on each runner before publishing a prerelease. Run it manually with a version tag matching `Directory.Build.props`.
 
 Cross-published Linux x64 and macOS ARM64 portable packages were generated locally. When extracting a Windows-created ZIP on Unix, restore executable permissions with `chmod +x NusantaraFishing.Desktop server/NusantaraFishing.Server` before launching from a terminal. This is not a substitute for OS-specific installer validation.
 
@@ -41,6 +41,6 @@ The hook uses Windows SDK signtool, SHA-256 and RFC3161 timestamping, then verif
 - [ ] Trusted Windows signing; macOS bundle signing/notarization; clean-machine installation.
 - [ ] Owner confirmation of Rodin redistribution terms and repository-wide license selection.
 
-GitHub Actions runs build, unit and HTTP acceptance checks on Windows/Linux/macOS when this repository is pushed to an enabled GitHub project. A separate manual workflow builds unsigned preview ZIPs on each OS. The workflows being present are not proof those runners have executed. GPU validation requires a real graphics session and is deliberately not reported as covered by headless CI.
+GitHub Actions runs build, unit and HTTP acceptance checks on Windows/Linux/macOS when this repository is pushed to an enabled GitHub project. The manual release workflow also builds and verifies native installer formats on the corresponding runners. GPU validation requires a real graphics session and is deliberately not reported as covered by headless CI.
 
 **ID:** Paket lokal siap diperiksa, tetapi rilis publik belum dinyatakan selesai. Sertifikat, mesin uji OS lain, dan persetujuan hak distribusi dari pemilik diperlukan untuk menyelesaikan checklist eksternal. Hasil uji otomatis tidak menggantikan playtest manusia.

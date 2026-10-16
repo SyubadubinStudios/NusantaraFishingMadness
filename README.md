@@ -13,16 +13,16 @@ An Indonesian fishing adventure with authored biome layouts, living environments
 
 ## Unduh installer / Download
 
-[Release 0.3.0-preview.1](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/tag/v0.3.0-preview.1) includes the .NET runtime:
+[Release 0.3.0-preview.2](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/tag/v0.3.0-preview.2) includes the .NET runtime:
 
 | Platform | Installer |
 |---|---|
-| Windows x64 | [Setup EXE](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.1/NusantaraFishingMadness-0.3.0-preview.1-win-x64-setup.exe) |
-| Linux x64 (Ubuntu/Debian) | [DEB](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.1/NusantaraFishingMadness-0.3.0-preview.1-linux-x64.deb) |
-| macOS 15+ Apple Silicon | [ARM64 PKG](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.1/NusantaraFishingMadness-0.3.0-preview.1-osx-arm64.pkg) |
-| macOS 15+ Intel | [x64 PKG](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.1/NusantaraFishingMadness-0.3.0-preview.1-osx-x64.pkg) |
+| Windows x64 | [Setup EXE](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.2/NusantaraFishingMadness-0.3.0-preview.2-win-x64-setup.exe) |
+| Linux x64 (Ubuntu/Debian) | [DEB](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.2/NusantaraFishingMadness-0.3.0-preview.2-linux-x64.deb) |
+| macOS 15+ Apple Silicon | [ARM64 PKG](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.2/NusantaraFishingMadness-0.3.0-preview.2-osx-arm64.pkg) |
+| macOS 15+ Intel | [x64 PKG](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.2/NusantaraFishingMadness-0.3.0-preview.2-osx-x64.pkg) |
 
-Preview installers lack trusted publisher signatures; macOS uses an ad-hoc app signature without notarization. See [installation notes and limitations](docs/releases/v0.3.0-preview.1.md) and [SHA256SUMS](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.1/SHA256SUMS). Native graphical gameplay has been exercised on Windows; CI installation checks do not establish Linux/macOS graphics compatibility.
+Preview installers lack trusted publisher signatures; macOS uses an ad-hoc app signature without notarization. See [installation notes and limitations](docs/releases/v0.3.0-preview.2.md) and [SHA256SUMS](https://github.com/SyubadubinStudios/NusantaraFishingMadness/releases/download/v0.3.0-preview.2/SHA256SUMS). Native graphical gameplay has been exercised on Windows; CI installation checks do not establish Linux/macOS graphics compatibility.
 
 ## Jalankan / Run
 
