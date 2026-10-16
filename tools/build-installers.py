@@ -81,7 +81,7 @@ def main():
         # Keep documentation and license files out of the executable payload.
         shutil.copytree(source, payload, ignore=shutil.ignore_patterns(
             'docs', 'README.md', 'LICENSE', 'PLAN.md', 'Progress.md',
-            'solution-design.md', 'THIRD-PARTY-NOTICES.md', 'package-manifest.json'))
+            'solution-design.md', 'THIRD-PARTY-NOTICES.md', 'package-manifest.json', 'licenses'))
         for executable in [payload / 'NusantaraFishing.Desktop', payload / 'server/NusantaraFishing.Server']:
             executable.chmod(0o755)
         resources = contents / 'Resources'
@@ -90,9 +90,9 @@ def main():
         license_dir = resources / 'ThirdPartyLicenses'
         license_dir.mkdir()
         shutil.copyfile(source / 'THIRD-PARTY-NOTICES.md', license_dir / 'THIRD-PARTY-NOTICES.md')
-        for license_file in (source / 'docs/licenses').rglob('*'):
+        for license_file in (source / 'licenses').rglob('*'):
             if license_file.is_file():
-                flattened_name = '__'.join(license_file.relative_to(source / 'docs/licenses').parts)
+                flattened_name = '__'.join(license_file.relative_to(source / 'licenses').parts)
                 shutil.copyfile(license_file, license_dir / flattened_name)
         with (contents / 'Info.plist').open('wb') as stream:
             plistlib.dump({'CFBundleIdentifier': 'com.syubadubinstudios.nusantarafishingmadness',

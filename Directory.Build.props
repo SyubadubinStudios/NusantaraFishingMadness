@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <Deterministic>true</Deterministic>
-    <Version>0.3.0-preview.2</Version>
+    <Version>0.3.0-preview.3</Version>
     <Authors>Ariana Mischa Fadhila</Authors>
     <Company>Syubadubin Studios</Company>
   </PropertyGroup>
