@@ -8,7 +8,6 @@ public sealed partial class IslandWorld
 {
     private readonly List<(Node Node, Vector3 Start)> clouds = [];
     private readonly List<Node> nightLights = [];
-    private readonly List<Node> waterfalls = [];
     private readonly List<Node> vents = [];
 
     private void BuildLandmarks()
@@ -26,12 +25,13 @@ public sealed partial class IslandWorld
             {
                 case LandmarkKind.Island:
                     IslandTerrain(feature);
-                    for (var rockIndex = 0; rockIndex < 4; rockIndex++)
+                    for (var rockIndex = 0; rockIndex < 6; rockIndex++)
                     {
-                        var a = rockIndex * MathF.Tau / 4 + .4f;
-                        var rock = Asset("karst", new(feature.X + MathF.Cos(a) * feature.Width * .39f, -.2f, feature.Z + MathF.Sin(a) * feature.Depth * .39f),
-                            new(feature.Width * .38f, feature.Height * (.55f + rockIndex * .08f), feature.Depth * .38f));
+                        var a = rockIndex * MathF.Tau / 6 + feature.X * .13f;
+                        var rock = Asset("karst-weathered", new(feature.X + MathF.Cos(a) * feature.Width * .39f, -.2f, feature.Z + MathF.Sin(a) * feature.Depth * .39f),
+                            new(feature.Width * .3f, feature.Height * (.22f + .1f * (rockIndex % 3)), feature.Depth * .3f));
                         if (rock is not null) rock.EulerAngles = new(0, a, 0);
+                        WeatheredRock(rock);
                     }
                     // Core's climbable trees stand on the crown; scattered vegetation fills the rest.
                     if (game.World.Biome is Biome.Coast or Biome.Reef or Biome.Lake)
@@ -64,14 +64,18 @@ public sealed partial class IslandWorld
                         Mesh(box, "#B4BEB7", new(feature.X, feature.Height + .8f, feature.Z + sign * feature.Depth * .45f), new(feature.Width, .8f, .15f));
                     break;
                 case LandmarkKind.Cliff:
+                    // A recessed rock mass closes gaps between the individual eroded outcrops.
+                    WeatheredRock(Mesh(box, feature.Color, new(feature.X, feature.Height * .29f, feature.Z),
+                        new(feature.Width * .9f, feature.Height * .58f, feature.Depth * .78f)));
                     var count = Math.Clamp((int)(Math.Max(feature.Width, feature.Depth) / 8), 3, 10);
                     for (var i = 0; i < count; i++)
                     {
                         var longX = feature.Width >= feature.Depth;
                         var offset = (i / (float)(count - 1) - .5f) * .72f;
-                        var rock = Asset("karst", new(feature.X + (longX ? offset * feature.Width : 0), -.1f, feature.Z + (longX ? 0 : offset * feature.Depth)),
+                        var rock = Asset("karst-weathered", new(feature.X + (longX ? offset * feature.Width : 0), -.1f, feature.Z + (longX ? 0 : offset * feature.Depth)),
                             new(longX ? feature.Width * 1.65f / count : feature.Width, feature.Height * (.85f + .2f * MathF.Sin(i * 1.7f)), longX ? feature.Depth : feature.Depth * 1.65f / count));
                         if (rock is not null) rock.EulerAngles = new(0, MathF.Sin(i * 2) * .15f, 0);
+                        WeatheredRock(rock);
                     }
                     break;
                 case LandmarkKind.Arch:
@@ -86,13 +90,10 @@ public sealed partial class IslandWorld
                     light.Position = pos + new Vector3(0, 2, 2);
                     break;
                 case LandmarkKind.Waterfall:
-                    // A pale curtain over the cliff; moving ribbons, foam and mist come from AddCascade.
-                    var cascade = Mesh(box, feature.Color, pos, scale with { Z = .3f });
-                    cascade.AttachMesh(box, Scene.CreateMaterial(MaterialOptions.Pbr(new(.62f, .86f, .92f, .48f), 0, .1f) with
-                    { AlphaMode = AlphaMode.Blend, CullMode = CullMode.None, DepthWrite = false }));
-                    waterfalls.Add(cascade);
-                    var face = new Vector3(feature.X, feature.Height, feature.Z + .2f);
-                    AddCascade([face, face with { Y = -.1f }], feature.Width, Vector3.UnitZ);
+                    var face = new Vector3(feature.X, feature.Height, feature.Z - .5f);
+                    AddCascade([face, face with { Y = feature.Height * .72f, Z = feature.Z },
+                        face with { Y = feature.Height * .3f, Z = feature.Z + .3f },
+                        face with { Y = -.1f, Z = feature.Z + .7f }], feature.Width, Vector3.UnitZ);
                     break;
                 case LandmarkKind.Vent:
                     Mesh(cone, feature.Color, new(feature.X, .2f, feature.Z), new(feature.Width, .8f, feature.Depth));
@@ -184,11 +185,6 @@ public sealed partial class IslandWorld
             var x = (cloud.Start.X + time * (storm ? 1.1f : .3f) + 90) % 180 - 90;
             cloud.Node.Position = new(x, cloud.Start.Y + MathF.Sin(time * .04f) * .3f, cloud.Start.Z);
             cloud.Node.Visible = daylight > .04f;
-        }
-        for (var i = 0; i < waterfalls.Count; i++)
-        {
-            var node = waterfalls[i];
-            node.Scale = node.Scale with { X = 15 + MathF.Sin(time * 3) * .15f };
         }
         for (var i = 0; i < vents.Count; i++)
         {

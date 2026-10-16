@@ -47,6 +47,10 @@ Run `build-island-life.py` through the Blender MCP with `runpy` (or inside Blend
 
 ### Visual upgrade
 
+`sources/polish-karst.py` prepares `models/karst-weathered.glb` from the existing Rodin karst through Blender MCP. The derivative has 1,799 triangles, softened edges, normalized bounds and no embedded textures; `sources/weathered-karst.blend` preserves the editable scene. Runtime limestone/moss shading lives in `NatureShaders.cs`, uses world coordinates to avoid stretched UVs, and retains PBR lighting. The original Rodin export remains intact.
+
+**ID:** Batu kapur baru berasal dari aset Rodin yang sudah ada, dihaluskan dan diringankan melalui Blender MCP. Warna batu, lumut, dan pasir basah dihitung menurut posisi serta kemiringan permukaan sehingga sambungannya lebih halus. Sumber Blender dan aset asli tetap tersedia.
+
 Rodin supplied `fisherman.glb`, `rina.glb`, `karst.glb`, `coral-sand.png`, `weathered-teak.png` and `harbor-keyart.png`. Exact prompts are in `sources/rodin-*.json`; original generated meshes are preserved under `sources/rodin/`. The key art appears in the travel atlas. The pier/pavilion exports embed the Rodin teak texture.
 
 `sources/build-visual-assets.py` runs inside Blender 5.2 through MCP, creates isolated scenes, optimizes characters to approximately 7k triangles, authors sixteen-bone rigs and Idle/Walk/Fishing clips, and exports only the active scene. It also builds palms, the pier, pavilions, jetski, surfboard, articulated gull/dolphin, coral and reef fish. `sources/visual-library.blend` preserves twelve editable scenes. It does not replace the user's current Blender file. Run `python tools/validate-visual-assets.py` after rebuilding exports.

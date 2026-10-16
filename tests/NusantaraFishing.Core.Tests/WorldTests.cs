@@ -6,6 +6,22 @@ namespace NusantaraFishing.Core.Tests;
 public sealed class WorldTests
 {
     [Fact]
+    public void IslandSurface_StaysFiniteAndContinuousAcrossCrownAndShore()
+    {
+        foreach (var island in Worlds.All.SelectMany(x => x.Landmarks).Where(x => x.Kind == LandmarkKind.Island))
+            for (var x = -12; x <= 12; x++)
+                for (var z = -12; z <= 12; z++)
+                {
+                    var px = island.X + x * island.Width / 20;
+                    var pz = island.Z + z * island.Depth / 20;
+                    var height = island.IslandSurface(px, pz, out _);
+                    Assert.InRange(height, -.7f, island.Height * 1.2f);
+                    Assert.InRange(Math.Abs(height - island.IslandSurface(px + .001f, pz, out _)), 0, .15f);
+                    Assert.InRange(Math.Abs(height - island.IslandSurface(px, pz + .001f, out _)), 0, .15f);
+                }
+    }
+
+    [Fact]
     public void AllRegions_HaveDistinctAuthoredLayoutsAndNavigableSpawn()
     {
         Assert.Equal(Catalog.Regions.Length, Worlds.All.Length);

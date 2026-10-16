@@ -72,6 +72,7 @@ Release during attacks and high tension. Sell catches in **Koleksi**, claim ques
 
 | Pulau hidup / Living islands | Air terjun / Waterfall |
 |---|---|
+| ![Updated Raja Ampat islands with world-space limestone and subtler foliage](docs/images/nature-ampat-polished.png) | ![Updated turbulent Air Terjun sheet with softened streaming patterns](docs/images/nature-waterfall-polished.png) |
 | ![Forested limestone islands with palms, banana plants and a cascade](docs/images/nature-coast-island.png) | ![Cliff waterfall with falling ribbons and mist](docs/images/nature-waterfall.png) |
 | ![Raja Ampat karst towers](docs/images/nature-ampat-islands.png) | ![The jukung stopped by its hull at the fishing pier](docs/images/nature-pier-collision.png) |
 

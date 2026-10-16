@@ -40,6 +40,23 @@ public sealed partial class MainWindow
             Console.WriteLine($"NATURE_WORLD: {region}, {world!.SwayingInstances} swaying instances, {world.WildlifeCount} wildlife, {world.Scene.NodeCount} nodes");
         }
 
+        // Direct entry distinguishes a scene-build problem from a cross-region GPU cache problem.
+        if (Program.Arguments.Any(x => x.StartsWith("--nature-region=", StringComparison.Ordinal)))
+        {
+            if (vm.Game.Region.Id == "terjun")
+            {
+                await Shot("waterfall-direct", new(0, 9, -26), 34, 0, .12f);
+                await Shot("waterfall-plunge-direct", new(0, 2, -26), 14, .4f, .2f);
+            }
+            else
+            {
+                var island = vm.Game.World.Landmarks.FirstOrDefault(x => x.Kind == LandmarkKind.Island);
+                await Shot("island-direct", island is null ? new(0, 2, 0) : new(island.X, island.Height * .5f, island.Z), 32, .3f, .25f);
+            }
+            Console.WriteLine("NATURE_DIRECT_OK: " + vm.Game.Region.Id);
+            return;
+        }
+
         await Visit("selatan");
         // Open-water wake and buoyancy.
         await Drive(new(1, 0), 1.2f);

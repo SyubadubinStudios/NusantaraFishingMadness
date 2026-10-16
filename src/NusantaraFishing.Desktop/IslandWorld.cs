@@ -52,6 +52,8 @@ public sealed partial class IslandWorld : IDisposable
         this.sceneCache = sceneCache ?? new();
         try
         {
+            // Reserve identical shader IDs before region-dependent terrain allocates resources.
+            InitializeNatureShaders();
             box = Scene.CreateBoxGeometry();
             sphere = Scene.CreateSphereGeometry(1, 12, 8);
             cylinder = Scene.CreateCylinderGeometry(.5f, .5f, 1, 8);

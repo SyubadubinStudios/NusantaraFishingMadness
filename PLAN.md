@@ -48,6 +48,7 @@ Acceptance passed locally: four independent HTTP clients complete an encounter w
 - [x] Blender 16-bone human rigs, idle/walk/fishing clips, skin-weight inspection and approximately 7k-triangle character exports.
 - [x] Detailed palms, pier, exhibition pavilions, jetski, surfboard, gulls, dolphins, coral and reef fish; editable Blender library and generation scripts.
 - [x] Sloped textured shore, grouped rock formations, quieter distant water detail, procedural sky clouds and atlas illustration.
+- [x] Irregular shared island ridges, blended limestone/moss/wet sand, lightweight weathered karst and flowing transparent waterfalls; direct native region review captured.
 - [x] Native character switching, fishing, audio and visual inspection; export validation checks embedded textures, isolated scenes, budgets and normalized weights.
 - [x] Repeated-region cache regression, balanced/low-power profiles, refreshed Windows package with 741 verified files, isolated install/uninstall and packaged four-player native smoke.
 

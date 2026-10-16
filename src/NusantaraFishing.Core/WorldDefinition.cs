@@ -23,9 +23,15 @@ public sealed record Landmark(LandmarkKind Kind, float X, float Z, float Width, 
         var hill = 0f;
         if (r < 1)
         {
-            hill = Height * 1.1f * MathF.Pow(1 - MathF.Pow(r, 2.4f), .62f);
-            hill += Height * .05f * MathF.Sin(angle * 7 + X * .3f) * r * (1 - r) * 4;
-            hill += (MathF.Sin(x * .9f + Z) * MathF.Cos(z * .7f + X) * .5f + MathF.Sin(x * 2.3f - z * 1.9f) * .25f) * Height * .02f * (1 - r);
+            // Broad shoulders, asymmetric saddles and erosion break up the old uniform dome.
+            // All detail vanishes at the rim, preserving the existing navigable waterline.
+            var shoulder = MathF.Pow(1 - MathF.Pow(r, 3.2f), .8f);
+            var ridge = .86f + .12f * MathF.Sin(dx * 4.4f + X * .31f) * MathF.Cos(dz * 3.7f + Z * .23f)
+                + .08f * MathF.Sin(dx * 7.3f + dz * 3.1f + Z);
+            hill = Height * shoulder * ridge;
+            var gully = MathF.Sin(angle * 7 + X * .3f + r * 3);
+            hill += Height * .07f * gully * r * (1 - r) * 4;
+            hill += MathF.Sin(x * .9f + Z) * MathF.Cos(z * .7f + X) * Height * .016f * (1 - r);
         }
         var beach = float.Lerp(.5f, -.7f, Math.Clamp((r - .97f) / .15f, 0, 1));
         return Math.Max(hill, beach);

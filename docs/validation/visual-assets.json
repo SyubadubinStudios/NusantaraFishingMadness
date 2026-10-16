@@ -472,6 +472,12 @@
       "bytes": 8633392
     },
     {
+      "asset": "karst-weathered.glb",
+      "triangles": 1799,
+      "animations": [],
+      "bytes": 51676
+    },
+    {
       "asset": "karst.glb",
       "triangles": 1799,
       "animations": [],

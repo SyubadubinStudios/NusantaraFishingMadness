@@ -17,6 +17,8 @@ for path in sorted((ROOT/'assets/models').glob('*.glb')):
     assert all('uri' not in image for image in data.get('images', [])), f'{path}: external image'
     triangles = sum(data['accessors'][p['indices']]['count']//3 for m in data['meshes'] for p in m['primitives'])
     clips = [a['name'] for a in data.get('animations', [])]
+    if path.stem == 'karst-weathered':
+        assert triangles <= 1800 and len(data['meshes']) == 1 and not data.get('images'), path
     if path.stem in ('fisherman', 'rina', 'bambang', 'tono', 'ojan', 'ojol', 'satpam', 'bakso', 'kucing', 'robot', 'pendaki'):
         assert set(clips) == {'Idle', 'Walk', 'Fishing'}, clips
         assert triangles <= 7500 and len(data['skins']) == 1

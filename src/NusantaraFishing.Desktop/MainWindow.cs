@@ -93,6 +93,12 @@ public sealed partial class MainWindow : Window
         store = new SaveStore(snapshotMode ? Path.Combine(Path.GetTempPath(), "nusantara-screenshot-save.json") : savePath);
         PlayerState player = new();
         if (snapshotMode) player.WorldHours = 9.5;
+        if (Program.Arguments.Contains("--nature-review"))
+        {
+            var region = Program.Arguments.FirstOrDefault(x => x.StartsWith("--nature-region=", StringComparison.Ordinal))?.Split('=', 2)[1];
+            if (region is not null && Catalog.Regions.Any(x => x.Id == region))
+            { player.RegionId = region; player.Experience = 1350; }
+        }
         if (!snapshotMode)
         {
             try { player = store.Load(); }

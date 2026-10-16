@@ -561,6 +561,14 @@
       "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
     },
     {
+      "path": "assets/models/karst-weathered.glb",
+      "bytes": 51676,
+      "sha256": "9d419f70119f2d670a4bbdc00035e19367fcc91a0c77fcc59b3dfa116976ac44",
+      "triangles": 1799,
+      "animations": 0,
+      "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
+    },
+    {
       "path": "assets/models/karst.glb",
       "bytes": 4109652,
       "sha256": "630bf147d890107bb501a2ec277783fac3395909b4c7d4fba1b056be20b532d4",
@@ -949,7 +957,7 @@
       "provenance": "Rodin generation with Blender preparation; provider rights confirmation required"
     }
   ],
-  "totalBytes": 128754051,
+  "totalBytes": 128805727,
   "packages": [
     {
       "id": "Avalonia",

@@ -32,14 +32,13 @@ public sealed partial class IslandWorld
         public Vector2 Previous { get; set; } = home;
         public float Yaw { get; set; }
     }
-    private sealed class Cascade(Vector3[] path, float width, Vector3 right, Vector3 outward, Node[] streaks, Node[] foam, ParticleEffect mist, Geometry mistGeometry)
+    private sealed class Cascade(Vector3[] path, float width, Vector3 right, Vector3 outward, Node[] foam, ParticleEffect mist, Geometry mistGeometry)
     {
         /// <summary>Centre line of the falling water from lip to plunge pool.</summary>
         public Vector3[] Path { get; } = path;
         public float Width { get; } = width;
         public Vector3 Right { get; } = right;
         public Vector3 Outward { get; } = outward;
-        public Node[] Streaks { get; } = streaks;
         public Node[] Foam { get; } = foam;
         public ParticleEffect Mist { get; } = mist;
         public Geometry MistGeometry { get; } = mistGeometry;
@@ -61,6 +60,10 @@ public sealed partial class IslandWorld
     private readonly List<WildAnimal> wildlife = [];
     private readonly List<Cascade> cascades = [];
     private Shader? mistShader;
+    private Shader? limestoneShader;
+    private Shader? cascadeShader;
+    private Material? limestoneMaterial;
+    private Material? cascadeMaterial;
     private readonly Random natureRandom = new(977);
     public int WildlifeCount => wildlife.Count;
     public int SwayingInstances => swayBatches.Sum(x => x.Relative.Length);
@@ -94,6 +97,33 @@ public sealed partial class IslandWorld
         return new(L(c.R), L(c.G), L(c.B));
     }
 
+    private Material LimestoneMaterial()
+    {
+        if (limestoneMaterial is not null) return limestoneMaterial;
+        limestoneMaterial = Scene.CreateMaterial(MaterialOptions.Pbr(Vector4.One, 0, .85f) with
+        {
+            Shader = limestoneShader,
+            Custom0 = new(Linear(game.World.VegetationColor) * 1.15f, Tropical ? 1 : .12f),
+            Custom1 = new(Linear(game.World.SandColor), 0)
+        });
+        return limestoneMaterial;
+    }
+
+    private void InitializeNatureShaders()
+    {
+        // Fixed creation order keeps shader IDs/source pairs stable across region swaps in ThreeNet 0.12.
+        limestoneShader = Scene.CreateShader(NatureShaders.Limestone, name: "nusantara-limestone");
+        cascadeShader = Scene.CreateShader(NatureShaders.Cascade, name: "nusantara-cascade");
+        mistShader = Scene.CreateShader(EffectShaders.Smoke, ShaderLanguage.Wgsl, "nusantara-waterfall-mist");
+    }
+
+    private void WeatheredRock(Node? root)
+    {
+        if (root is null) return;
+        foreach (var node in Descendants(root).Where(x => x.Geometry is not null))
+            node.AttachMesh(node.Geometry!, LimestoneMaterial());
+    }
+
     // ---- Island terrain ------------------------------------------------------------------
 
     private static float IslandHeight(Landmark island, float x, float z, out float r) => island.IslandSurface(x, z, out r);
@@ -115,21 +145,11 @@ public sealed partial class IslandWorld
     }
 
     /// <summary>
-    /// One polar grid per island; each triangle picks jungle floor, bare karst or beach sand by its
-    /// slope and height, so cliffs read as limestone and gentle ground as forest.
+    /// Shared height field with continuous world-space limestone, foliage and wet-sand shading.
     /// </summary>
     private void IslandTerrain(Landmark island)
     {
         const int segments = 84, rings = 34;
-        var lush = Tropical && game.World.Biome != Biome.Sky;
-        var tint = Linear(island.Color);
-        Material[] palette =
-        [
-            lush ? TexturedMaterial("jungle-floor.jpg", Vector3.Lerp(Vector3.One, tint * 2.2f, .25f), .92f)
-                 : TexturedMaterial("wet-rock.jpg", Vector3.Lerp(new(1.5f), tint * 3, .5f), .85f),
-            TexturedMaterial("wet-rock.jpg", Vector3.Lerp(new(1.7f), tint * 3, .15f), .8f),
-            TexturedMaterial("coral-sand.png", Linear(game.World.SandColor) * 1.6f, .95f)
-        ];
         var grid = new Vector3[(rings + 1) * (segments + 1)];
         var normals = new Vector3[grid.Length];
         for (var ring = 0; ring <= rings; ring++)
@@ -141,38 +161,16 @@ public sealed partial class IslandWorld
                 grid[ring * (segments + 1) + s] = point;
                 normals[ring * (segments + 1) + s] = IslandNormal(island, point.X, point.Z);
             }
-        var bands = new List<Vertex>[] { [], [], [] };
+        var vertices = grid.Select((p, i) => new Vertex(p, normals[i], new(p.X * .16f, p.Z * .16f))).ToArray();
+        var indices = new List<uint>(rings * segments * 6);
         for (var ring = 0; ring < rings; ring++)
             for (var s = 0; s < segments; s++)
             {
-                var a = ring * (segments + 1) + s;
-                int[][] triangles = [[a, a + 1, a + segments + 1], [a + 1, a + segments + 2, a + segments + 1]];
-                // Classify whole grid quads, so material borders step cleanly instead of zig-zagging.
-                var corners = new[] { grid[a], grid[a + 1], grid[a + segments + 1], grid[a + segments + 2] };
-                var average = (corners[0] + corners[1] + corners[2] + corners[3]) / 4;
-                var up = Vector3.Normalize(Vector3.Cross(corners[2] - corners[0], corners[1] - corners[0]) + Vector3.Cross(corners[2] - corners[1], corners[3] - corners[1]));
-                var band = average.Y < .75f ? 2 : MathF.Abs(up.Y) < .62f ? 1 : 0;
-                foreach (var t in triangles)
-                {
-                    foreach (var index in t)
-                    {
-                        var p = grid[index];
-                        var uv = band == 1
-                            ? new Vector2(MathF.Atan2(p.Z - island.Z, p.X - island.X) * (island.Width + island.Depth) * .1f, p.Y * .2f)
-                            : new Vector2(p.X * .16f, p.Z * .16f);
-                        bands[band].Add(new(p, normals[index], uv));
-                    }
-                }
+                var a = (uint)(ring * (segments + 1) + s);
+                indices.AddRange([a, a + 1, a + segments + 1, a + 1, a + segments + 2, a + segments + 1]);
             }
-        for (var band = 0; band < bands.Length; band++)
-        {
-            if (bands[band].Count == 0) continue;
-            var vertices = bands[band].ToArray();
-            var indices = Enumerable.Range(0, vertices.Length).Select(x => (uint)x).ToArray();
-            var node = Scene.AddMesh(Scene.CreateGeometry(vertices, indices), palette[band], name: "island-terrain");
-            node.CastShadow = band != 2;
-            staticMeshes.Add(node);
-        }
+        var node = Scene.AddMesh(Scene.CreateGeometry(vertices, indices.ToArray()), LimestoneMaterial(), name: "island-terrain");
+        staticMeshes.Add(node);
     }
 
     // ---- Vegetation ------------------------------------------------------------------------
@@ -465,19 +463,40 @@ public sealed partial class IslandWorld
 
     private void AddCascade(Vector3[] path, float width, Vector3 outward)
     {
-        mistShader ??= Scene.CreateShader(EffectShaders.Smoke, ShaderLanguage.Wgsl, "nusantara-waterfall-mist");
         var right = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, outward));
         var white = Scene.CreateMaterial(MaterialOptions.Pbr(new(.92f, .97f, 1, .42f), 0, .2f) with
         { AlphaMode = AlphaMode.Blend, CullMode = CullMode.None, DepthWrite = false });
-        var height = path[0].Y - path[^1].Y;
-        // Many thin, overlapping ribbons falling at different rates read as moving water.
-        var streaks = new Node[Math.Clamp((int)(width * 2.6f), 6, 40)];
-        for (var i = 0; i < streaks.Length; i++)
+        cascadeMaterial ??= Scene.CreateMaterial(MaterialOptions.Pbr(Vector4.One, 0, .35f) with
         {
-            streaks[i] = Scene.AddMesh(box, white, name: "waterfall-streak");
-            streaks[i].CastShadow = false;
-            streaks[i].Scale = new(.12f + natureRandom.NextSingle() * .3f, Math.Clamp(height * (.2f + natureRandom.NextSingle() * .2f), 1, 7), .05f);
+            Shader = cascadeShader, AlphaMode = AlphaMode.Blend, CullMode = CullMode.None,
+            DepthWrite = false
+        });
+        const int acrossSteps = 16, downSteps = 24;
+        var vertices = new Vertex[(acrossSteps + 1) * (downSteps + 1)];
+        var indices = new List<uint>(acrossSteps * downSteps * 6);
+        for (var row = 0; row <= downSteps; row++)
+        {
+            var v = row / (float)downSteps;
+            var scaled = v * (path.Length - 1);
+            var part = Math.Min((int)scaled, path.Length - 2);
+            var center = Vector3.Lerp(path[part], path[part + 1], scaled - part);
+            for (var col = 0; col <= acrossSteps; col++)
+            {
+                var u = col / (float)acrossSteps;
+                var spread = .83f + .09f * MathF.Sin(v * 5) + .06f * v;
+                var ripple = MathF.Sin(u * 23 + v * 12) * .12f + MathF.Sin(u * 41 - v * 7) * .06f;
+                var point = center + right * ((u - .5f) * width * spread) + outward * ripple;
+                // Break up the lip rather than ending all streams on one ruler-straight edge.
+                point.Y -= (.5f + .5f * MathF.Sin(u * 31)) * .3f * (1 - v);
+                vertices[row * (acrossSteps + 1) + col] = new(point, outward, new(u, v));
+                if (row < downSteps && col < acrossSteps)
+                {
+                    var a = (uint)(row * (acrossSteps + 1) + col);
+                    indices.AddRange([a, a + 1, a + acrossSteps + 1, a + 1, a + acrossSteps + 2, a + acrossSteps + 1]);
+                }
+            }
         }
+        Scene.AddMesh(Scene.CreateGeometry(vertices, indices.ToArray()), cascadeMaterial, name: "flowing-cascade").CastShadow = false;
         var foam = new Node[Math.Clamp((int)(width * 1.2f), 4, 18)];
         for (var i = 0; i < foam.Length; i++)
         {
@@ -502,9 +521,9 @@ public sealed partial class IslandWorld
             Turbulence = .8f
         };
         var geometry = mist.CreateGeometry(Scene);
-        var mistMaterial = Scene.CreateMaterial(ParticleEffect.SmokeMaterial(mistShader, new(.92f, .96f, .98f), .38f));
+        var mistMaterial = Scene.CreateMaterial(ParticleEffect.SmokeMaterial(mistShader!, new(.92f, .96f, .98f), .38f));
         Scene.AddMesh(geometry, mistMaterial, name: "waterfall-mist").CastShadow = false;
-        cascades.Add(new(path, width, right, outward, streaks, foam, mist, geometry));
+        cascades.Add(new(path, width, right, outward, foam, mist, geometry));
     }
 
     /// <summary>A narrow stream tumbling down the flank of the tallest tropical island.</summary>
@@ -523,55 +542,18 @@ public sealed partial class IslandWorld
         }
         path[^1] = path[^1] with { Y = Math.Max(path[^1].Y, -.05f) };
         var outward = Vector3.Normalize((path[^1] - path[0]) with { Y = 0 });
-        var right = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, outward));
-        // A ribbon draped over the slope: the stream bed the streaks run down.
         const float width = 1.8f;
-        var vertices = new Vertex[path.Length * 2];
-        for (var i = 0; i < path.Length; i++)
-        {
-            var normal = IslandNormal(island, path[i].X, path[i].Z);
-            for (var side = 0; side < 2; side++)
-            {
-                var p = path[i] + right * ((side - .5f) * width * (.75f + .25f * i / steps));
-                vertices[i * 2 + side] = new(p, normal, new(side, i / (float)steps));
-            }
-        }
-        var indices = new List<uint>();
-        for (var i = 0; i < steps; i++)
-        {
-            var a = (uint)(i * 2);
-            indices.AddRange([a, a + 2, a + 1, a + 1, a + 2, a + 3]);
-        }
-        var bed = Scene.CreateMaterial(MaterialOptions.Pbr(new(.42f, .74f, .82f, .7f), 0, .1f) with
-        { AlphaMode = AlphaMode.Blend, CullMode = CullMode.None, DepthWrite = false });
-        Scene.AddMesh(Scene.CreateGeometry(vertices, indices.ToArray()), bed, name: "island-stream").CastShadow = false;
         AddCascade(path, width, outward);
     }
 
     private void UpdateCascades(float dt, float time)
     {
         if (cascades.Count == 0) return;
+        cascadeMaterial?.Update(options => options with { Custom0 = new(time, 0, 0, 0) });
         var camera = Camera.WorldMatrix;
         var wind = WindDirection(time) * .3f * WindStrength;
         foreach (var cascade in cascades)
         {
-            var count = cascade.Streaks.Length;
-            for (var i = 0; i < count; i++)
-            {
-                var streak = cascade.Streaks[i];
-                // Each ribbon slides from the lip, accelerating like falling water, then restarts.
-                var rate = .45f + (i * .618f % 1) * .35f;
-                var cycle = (time * rate + i * .37f) % 1;
-                var (point, down) = cascade.Along(cycle * cycle);
-                var across = ((i * .618f % 1) - .5f) * cascade.Width * .9f;
-                var up = -down;
-                var forward = Vector3.Normalize(Vector3.Cross(cascade.Right, up));
-                streak.Rotation = Quaternion.CreateFromRotationMatrix(new Matrix4x4(
-                    cascade.Right.X, cascade.Right.Y, cascade.Right.Z, 0, up.X, up.Y, up.Z, 0, forward.X, forward.Y, forward.Z, 0, 0, 0, 0, 1));
-                // The ribbon hangs below its leading point, so nothing pokes above the lip.
-                streak.Position = point + cascade.Right * across + forward * .12f + down * streak.Scale.Y * .5f;
-                streak.Visible = point.Y + down.Y * streak.Scale.Y > -.2f;
-            }
             for (var i = 0; i < cascade.Foam.Length; i++)
             {
                 // Churning foam: blobs swell and collapse out of phase across the plunge pool.
@@ -580,7 +562,7 @@ public sealed partial class IslandWorld
                 var drift = (time * .4f + i * .29f) % 1;
                 cascade.Foam[i].Position = cascade.Foot + cascade.Right * across + cascade.Outward * (.4f + drift * 1.6f) + new Vector3(0, .05f, 0);
                 var size = (.35f + churn * .55f) * (1 - drift * .6f) * Math.Clamp(cascade.Width * .12f, .6f, 1.6f);
-                cascade.Foam[i].Scale = new(size, size * .3f, size);
+                cascade.Foam[i].Scale = new(size, size * .12f, size);
             }
             // Spray pocks the plunge pool continuously, spreading rings outward.
             cascade.DropCarry += dt * Math.Clamp(cascade.Width * 4, 6, 40);

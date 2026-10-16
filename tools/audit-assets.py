@@ -51,7 +51,7 @@ for folder in ('models', 'textures', 'audio', 'art'):
         generated = {'jukung.glb', 'fisherman.glb', 'rina.glb', 'bambang.glb', 'tono.glb', 'ojan.glb', 'ojol.glb', 'satpam.glb', 'bakso.glb', 'kucing.glb', 'robot.glb', 'pendaki.glb', 'karst.glb', 'coral-sand.png', 'weathered-teak.png', 'harbor-keyart.png'}
         generated |= rodin_catches | {'launch-voyage.jpg', 'loading-reef.jpg', 'loading-river.jpg', 'loading-myth.jpg', 'game-icon.png', 'game-icon-256.png', 'game-icon.ico', 'game-icon.icns'}
         textured = {'fishing-pier.glb', 'harbor-pavilion.glb', 'raft-house.glb', 'government-outpost.glb'}
-        item['provenance'] = ('Rodin generation with Blender preparation; provider rights confirmation required' if path.name in generated
+        item['provenance'] = ('Rodin generation with Blender preparation; provider rights confirmation required' if path.name in generated or path.name == 'karst-weathered.glb'
             else 'Original Blender geometry with Rodin teak texture; provider texture rights confirmation required' if path.name in textured
             else 'Original project asset; editable source in assets/sources')
         assets.append(item)

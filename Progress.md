@@ -5,6 +5,13 @@ Created by Ariana Mischa Fadhila of Syubadubin Studios.
 
 ## Implemented and verified locally
 
+## Visual polish / Pemolesan visual - 2026-10-17
+
+- **EN:** Island heights now use irregular shoulders and saddles shared by rendering and climbing. Indexed terrain blends limestone, foliage and wet sand by slope and elevation, with screen-space erosion detail. The existing Rodin karst now has an isolated 1,799-triangle weathered derivative from Blender MCP. Cliff outcrops use a recessed stone backing. Waterfalls use curved sheets with warped stream texture, translucent edges, foam, mist and pool ripples. Shader creation is stable across region builds. Direct Raja Ampat and Terjun native captures are in [visual polish](docs/visual-polish.md).
+- **ID:** Punggung dan cekungan pulau kini lebih alami dan tetap sama dengan medan yang bisa dipanjat. Batu, lumut, serta pasir basah menyatu mengikuti lereng. Model batu Rodin diringankan melalui Blender MCP tanpa mengubah aset asli. Air terjun memakai aliran bertekstur lebih bervariasi dengan tepi transparan, busa, kabut, dan riak.
+
+Validation: Release build zero warnings/errors; 68 tests passed (61 Core, seven Desktop); 88 GLBs pass structural validation. Both custom WGSL shaders compiled and rendered in native direct-load reviews of Raja Ampat and Terjun. Low-power Intel UHD 620 benchmark: **25.8 FPS**, p95 **64.6 ms**, 1.58 GB working set, **62.3-second** first rendered frame. The previous same-condition review was 26.2 FPS, p95 49.0 ms; this pass does not claim a speed gain. Raw report: [visual polish low power](docs/performance/visual-polish-low-power.json).
+
 - .NET 10 native Avalonia/ThreeNet desktop, independent core and ASP.NET Core authoritative server.
 - Fourteen authored biome layouts and bounded terrain streaming; all regions completed a GPU tour.
 - Transparent depth-aware water, refraction/caustics, visible underwater life, wakes and rain ripples.
