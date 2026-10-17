@@ -17,6 +17,8 @@ public static class NetworkAcceptance
     public static async Task<int> Main(string[] args)
     {
         Console.OutputEncoding=Encoding.UTF8;
+        var kraken = args.Contains("--kraken");
+        var region = kraken ? "ampat" : "selatan";
         var delay=75;
         var delayIndex=Array.IndexOf(args,"--delay-ms");
         if(delayIndex>=0 && delayIndex+1<args.Length) delay=Math.Clamp(int.Parse(args[delayIndex+1]),0,250);
@@ -45,7 +47,7 @@ public static class NetworkAcceptance
             for(var i=0;i<4;i++)
             {
                 state.Accounts.Add(new() { Id="acceptance-"+i,Name="Client "+i,Room="acceptance",TokenHash=CoopPersistence.HashToken(tokens[i]),
-                    Player=new() { Coins=1000,Experience=300,RodLevel=3,TotalCaught=10 } });
+                    Player=new() { RegionId=region,Coins=1000,Experience=300,RodLevel=3,TotalCaught=10 } });
                 state.Scores.Add(new() { PlayerId="acceptance-"+i,Name="Client "+i,Period=yesterday.Key,StartsAt=yesterday.Start,EndsAt=yesterday.End,Score=100-i,Catches=1,LargestWeight=1 });
             }
             CoopPersistence.Save(Path.Combine(folder,"server-state.json"),state);
@@ -56,6 +58,12 @@ public static class NetworkAcceptance
             {
                 clients[i]=new(address);
                 joined[i]=await clients[i].JoinAsync(new("Client "+i,"acceptance",ResumeToken:tokens[i]),ct);
+                if (kraken && i == 0)
+                {
+                    var solo = await clients[i].SendAsync(new("boss"), ct);
+                    Check(!solo.Accepted && solo.Error == BossRules.PartyRequired && solo.View.Boss is null,
+                        "Kraken rejects solo start over HTTP");
+                }
             }
             Check(joined[3].View.Players.Length==4,"four independent clients joined");
             using(var extra=new CoopClient(address))
@@ -76,7 +84,19 @@ public static class NetworkAcceptance
                 await Task.Delay(100+delay,ct);
             }
             Check(views[0].Players.Any(x=>x.Id==joined[1].PlayerId && x.X>.5f) && views[0].Players.Any(x=>x.Id==joined[2].PlayerId && x.X<-.5f),"movement replicated to another client");
-            for(var i=0;i<4;i++) views[i]=(await clients[i].SendAsync(new("boss"),ct)).View;
+            for(var i=0;i<4;i++)
+            {
+                var start = await clients[i].SendAsync(new("boss"),ct);
+                Check(start.Accepted, "boss challenge accepted for client " + i);
+                views[i] = start.View;
+                if (kraken && i == 0)
+                {
+                    await Task.Delay(500, ct);
+                    var waiting = (await clients[i].InputAsync(0, 0, true, 0, ct)).View;
+                    Check(waiting.Self.Phase == FishingPhase.Waiting && waiting.Boss!.Cue == BossRules.WaitingForParty &&
+                        waiting.Boss.Health == waiting.Boss.Maximum, "Kraken waits for explicit partner participation over HTTP");
+                }
+            }
             var bossTimer=Stopwatch.StartNew();
             var observedFighting=false;
             var reconnected=false;
@@ -111,7 +131,7 @@ public static class NetworkAcceptance
             for(var i=0;i<4;i++)
             {
                 views[i]=(await clients[i].InputAsync(0,0,false,0,ct)).View;
-                Check(views[i].Self.Player.Inventory.Count==1 && views[i].Self.Player.Inventory[0].SpeciesId=="boss-selatan","exactly one boss reward for client "+i);
+                Check(views[i].Self.Player.Inventory.Count==1 && views[i].Self.Player.Inventory[0].SpeciesId=="boss-"+region,"exactly one boss reward for client "+i);
             }
             // Replay an old request through a raw HTTP connection; it must be ignored.
             using(var replay=new HttpClient { BaseAddress=new(address) })
@@ -136,8 +156,8 @@ public static class NetworkAcceptance
             var duplicate=await clients[0].SendAsync(new("tournament","daily"),ct);
             Check(claim.Accepted && !duplicate.Accepted && duplicate.View.Self.Player.Coins==before+1000,"ended tournament prize is paid once");
             var output=Path.Combine(root,"artifacts/acceptance"); Directory.CreateDirectory(output);
-            File.WriteAllText(Path.Combine(output,"network.json"),JsonSerializer.Serialize(new
-            { Passed=true,Clients=4,InjectedClientDelayMs=delay,Seconds=timer.Elapsed.TotalSeconds,OperatingSystem=Environment.OSVersion.ToString(),Runtime=Environment.Version.ToString(),Checks=checks },new JsonSerializerOptions { WriteIndented=true }));
+            File.WriteAllText(Path.Combine(output,kraken ? "network-kraken.json" : "network.json"),JsonSerializer.Serialize(new
+            { Passed=true,Region=region,Clients=4,InjectedClientDelayMs=delay,Seconds=timer.Elapsed.TotalSeconds,OperatingSystem=Environment.OSVersion.ToString(),Runtime=Environment.Version.ToString(),Checks=checks },new JsonSerializerOptions { WriteIndented=true }));
             Console.WriteLine($"NETWORK_ACCEPTANCE_OK: {checks.Count} checks, 4 HTTP clients, delay {delay} ms, {timer.Elapsed.TotalSeconds:N1} s.");
             return 0;
         }

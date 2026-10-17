@@ -131,33 +131,37 @@ public sealed class CoopServiceTests
         Rule(()=>service.Join(new("Wrong mode","festival",RoomMode.Coop)),409);
     }
 
-    [Fact]
-    public void FourPlayers_DefeatSharedBoss_AndReconnectRestartCannotDuplicateRewards()
+    [Theory]
+    [InlineData("selatan", 4)]
+    [InlineData("ampat", 4)]
+    [InlineData("ampat", 2)]
+    public void Party_DefeatsSharedBoss_AndReconnectRestartCannotDuplicateRewards(string region, int playerCount)
     {
         var clock=new TestClock();
         var folder=Path.Combine(Path.GetTempPath(),"nfm-coop-"+Guid.NewGuid());
         var path=Path.Combine(folder,"server.json");
         var seed=new CoopStoredState();
-        var tokens=Enumerable.Range(1,4).Select(i=>i.ToString("X64")).ToArray();
-        for(var i=0;i<4;i++) seed.Accounts.Add(new()
+        var tokens=Enumerable.Range(1,playerCount).Select(i=>i.ToString("X64")).ToArray();
+        for(var i=0;i<playerCount;i++) seed.Accounts.Add(new()
         {
             Id="player-"+i,Name="Angler "+i,Room="boss-test",TokenHash=CoopPersistence.HashToken(tokens[i]),
-            Player=new() { Coins=1000,Experience=300,RodLevel=3,TotalCaught=10 }
+            Player=new() { RegionId=region,Coins=1000,Experience=300,RodLevel=3,TotalCaught=10 }
         });
         try
         {
             var service=new CoopService(path,clock,seed);
-            var views=new RoomView[4]; var sequence=new long[4];
-            for(var i=0;i<4;i++)
-            {
+            var views=new RoomView[playerCount]; var sequence=new long[playerCount];
+            for(var i=0;i<playerCount;i++)
                 views[i]=service.Join(new("Angler "+i,"boss-test",ResumeToken:tokens[i])).View;
+            for(var i=0;i<playerCount;i++)
+            {
                 Assert.True(service.Command(tokens[i],new(++sequence[i],"boss")).Accepted);
             }
             var won=false;
             for(var frame=0;frame<3000;frame++)
             {
                 clock.Advance(.05);
-                for(var i=0;i<4;i++)
+                for(var i=0;i<playerCount;i++)
                 {
                     var self=views[i].Self;
                     var input=new PlayerCommand(++sequence[i],"input",Reel:self.Phase==FishingPhase.Fighting && self.Tension<.6 && !self.BossCue.Contains("SERANGAN",StringComparison.Ordinal),Direction:(float)Math.Sign(self.FishDirection)*.8f);
@@ -168,25 +172,25 @@ public sealed class CoopServiceTests
                 service.Advance(.05);
                 if(views[0].Boss is { Health:<=0 }) { won=true; break; }
             }
-            Assert.True(won,"Four clients must complete the shared encounter.");
-            for(var i=0;i<4;i++)
+            Assert.True(won,"The party must complete the shared encounter.");
+            for(var i=0;i<playerCount;i++)
             {
                 var view=service.GetView(tokens[i]);
                 Assert.Single(view.Self.Player.Inventory);
-                Assert.Equal("boss-selatan",view.Self.Player.Inventory[0].SpeciesId);
+                Assert.Equal("boss-"+region,view.Self.Player.Inventory[0].SpeciesId);
                 Assert.Equal(11,view.Self.Player.TotalCaught);
-                Assert.Equal(4,view.Boss!.Contributors);
+                Assert.Equal(playerCount,view.Boss!.Contributors);
             }
-            service.Leave(tokens[3]);
-            var resumed=service.Join(new("Angler 3","boss-test",ResumeToken:tokens[3]));
+            service.Leave(tokens[playerCount - 1]);
+            var resumed=service.Join(new("Angler 3","boss-test",ResumeToken:tokens[playerCount - 1]));
             Assert.Single(resumed.View.Self.Player.Inventory);
             service.Flush();
             var restarted=new CoopService(path,clock);
-            var afterRestart=restarted.Join(new("Angler 3","boss-test",ResumeToken:tokens[3]));
+            var afterRestart=restarted.Join(new("Angler 3","boss-test",ResumeToken:tokens[playerCount - 1]));
             Assert.Single(afterRestart.View.Self.Player.Inventory);
-            Assert.False(restarted.Command(tokens[3],new(afterRestart.LastSequence,"boss")).Accepted);
-            Assert.Single(restarted.GetView(tokens[3]).Self.Player.Inventory);
-            Assert.Equal(4,restarted.Leaderboard("daily").Entries.Length);
+            Assert.False(restarted.Command(tokens[playerCount - 1],new(afterRestart.LastSequence,"boss")).Accepted);
+            Assert.Single(restarted.GetView(tokens[playerCount - 1]).Self.Player.Inventory);
+            Assert.Equal(playerCount,restarted.Leaderboard("daily").Entries.Length);
         }
         finally { if(Directory.Exists(folder)) Directory.Delete(folder,true); }
     }

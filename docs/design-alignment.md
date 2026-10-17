@@ -12,6 +12,7 @@ Checkpoint: 16 October 2026. Basis: `solution-design.md` and `NusantaraFishingMa
 | Creature behavior | Octopus camouflage/ink, Phantom visibility, Ninja reflex response, crab counter window, rocket squid dash, electric eel and crocodile attack windows. Batik/Disco colors animate; elongated Rodin creatures have four-bone Swim clips. |
 | Character mechanics | Rina barter (3 sandals for keris; 2 fridges for map), Bambang research, Tono government-pier permission, Ojan tree climbing/jumping and shore hand catching. |
 | Underwater play | Raja Ampat snorkeling records/releases conservation wildlife; spear mode excludes protected species. Swimming leaves the boat moored and uses an underwater camera. |
+| Kraken party | At least two ready online players must be in Raja Ampat in the same room. Both must challenge the boss; fighting pauses if fewer than two participants remain connected, while the three-minute deadline continues. |
 | Progression | 24 quests, discovery-gated secret quests, Dugong achievement, persistent top-three tournament trophies displayed in the museum. |
 | Locations | Fourteen biome layouts, Kalimantan raft houses, government outposts/guards in Jakarta and the quarry, actual catch models in exhibitions. |
 | Sound | Fourteen synthesized regional loops plus boss and DJ themes, crossfades, volume/mute and existing environmental effects. |
@@ -23,7 +24,7 @@ Checkpoint: 16 October 2026. Basis: `solution-design.md` and `NusantaraFishingMa
 - Twenty-five catch exports retain stylized procedural forms. Several boats and scenery pieces need a comparable detailed art pass. Regional buildings and vegetation still share assets.
 - Character rigs need closer animation review, especially coats/aprons and nonhuman silhouettes. Rodin octopus/squid limbs do not yet have individual skeletal animation.
 - Snorkeling and spearfishing currently reuse directional encounter controls; a dedicated approach/aim/throw interaction remains to be developed.
-- Boss combat still shares regional attack archetypes. Kraken does not yet enforce a multi-player party requirement.
+- Boss combat still shares regional attack archetypes; further distinct combat patterns remain to be developed. Kraken now enforces a multi-player party requirement.
 - Ambient NPCs have scripted activities; drifters have no rescue quest. This pass does not supply deeper social AI or every bespoke interaction described in the design.
 - Startup time, wider hardware coverage, physical controllers, 32 rendered festival clients, Linux/macOS runtime tests and independent playtesting remain open. Distribution requirements remain in [PLAN.md](../PLAN.md).
 

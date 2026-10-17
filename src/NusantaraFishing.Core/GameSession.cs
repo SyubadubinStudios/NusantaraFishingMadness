@@ -12,6 +12,7 @@ public sealed partial class GameSession
     private double abilitySeconds;
     private double reefSeconds;
     private bool deferredBossRewards;
+    private bool bossPartyWaiting;
     internal bool BossRewardsDeferred => deferredBossRewards;
     private double? sharedEncounterSeconds;
     public PlayerState Player { get; private set; }
@@ -28,7 +29,7 @@ public sealed partial class GameSession
     private double jumpDuration = 1.1;
     private float jumpStartHeight;
     private Vector2 safeFootPosition = new(-7, 2);
-    public Vector2 HookPosition => new(Player.PositionX + (float)FishDirection * 4, Player.PositionZ - 7);
+    public Vector2 HookPosition => Player.InWater && Dive is { } dive ? new(dive.TargetX, dive.TargetZ) : new(Player.PositionX + (float)FishDirection * 4, Player.PositionZ - 7);
     public FishingPhase Phase { get; private set; }
     public Weather Weather { get; private set; }
     public Species? Hooked { get; private set; }
@@ -50,6 +51,7 @@ public sealed partial class GameSession
     {
         if (Busy || !Catalog.Characters.Any(x => x.Id == id) || Player.Level < UnlockLevel(id)) return false;
         Player.CharacterId = id;
+        Dive = null;
         Player.CatchingMethod = CatchingMethod.Rod;
         Player.Climbing = false;
         if (Player.OnFoot && !World.CanWalk(Traversal.Position(Player), id is "ojan" or "pendaki", id == "tono")) Player.OnFoot = false;
@@ -69,6 +71,7 @@ public sealed partial class GameSession
         if (Player.Coins < cost) { Message = "Koin perjalanan belum cukup. Jual tangkapan di pasar."; return false; }
         Player.Coins -= cost;
         Player.RegionId = region.Id;
+        Dive = null;
         Player.OnFoot = false;
         Player.CatchingMethod = CatchingMethod.Rod;
         Player.Climbing = false;
@@ -80,19 +83,28 @@ public sealed partial class GameSession
         return true;
     }
 
-    public bool Cast(bool challengeBoss = false,bool deferBossRewards=false)
+    public bool Cast(bool challengeBoss = false) => CastInternal(challengeBoss, false, 1);
+
+    internal bool CastSharedBoss(int readyPlayers) => CastInternal(true, true, readyPlayers);
+
+    private bool CastInternal(bool challengeBoss, bool deferBossRewards, int readyPlayers)
     {
         if (Busy) return false;
+        if (challengeBoss && readyPlayers < BossRules.MinimumPlayers(Region.Id))
+        { Message = BossRules.PartyRequired; return false; }
         if (challengeBoss && Player.InWater) { Message = "Kembali ke perahu sebelum menantang boss."; return false; }
         if (Player.CatchingMethod == CatchingMethod.Hand && !CanReachWater())
         { Message = "Dekati tepi air agar tangan Ojan dapat menjangkau tangkapan."; return false; }
         if (Player.Inventory.Count >= 200) { Message = "Tas penuh. Jual atau sumbangkan tangkapan."; return false; }
         if (challengeBoss && (Player.RodLevel < 3 || Player.TotalCaught < 10))
         { Message = "Boss membutuhkan joran level 3 dan 10 tangkapan."; return false; }
+        if (Player.InWater) return BeginDive();
+        Dive = null;
         var baitCost = challengeBoss || Player.CatchingMethod == CatchingMethod.Rod ? Bait.Cost : 0;
         if (Player.Coins < baitCost) { Message = "Koin umpan belum cukup. Pilih cacing gratis."; return false; }
         Player.Coins -= baitCost;
         deferredBossRewards=challengeBoss && deferBossRewards;
+        bossPartyWaiting = false;
         if (challengeBoss) Player.CatchingMethod = CatchingMethod.Rod;
         Hooked = challengeBoss ? Catalog.BossSpecies(Region) : RollSpecies();
         Phase = FishingPhase.Waiting;
@@ -159,6 +171,8 @@ public sealed partial class GameSession
             Player.VisitorsWelcomed += visitors;
             Player.Coins += Player.Exhibits.Count * 3 + visitors * 2;
         }
+        if (bossPartyWaiting) return;
+        if (Player.InWater && Dive is not null) { TickDive(seconds, reeling, direction); return; }
         if (Phase == FishingPhase.Waiting)
         {
             phaseSeconds -= seconds;
@@ -219,13 +233,31 @@ public sealed partial class GameSession
         if(regionId!=Region.Id) throw new InvalidOperationException("Boss region does not match player.");
         Hooked=Catalog.BossSpecies(Region); deferredBossRewards=false; LandCatch();
     }
-    public SimulationSnapshot Snapshot()=>new(Player.Copy(),Phase,Weather,Hooked?.Id,LastCatch,Tension,Progress,FishDirection,BossCue,Message,abilitySeconds,JumpHeight);
+    internal bool RejectBoss(string message)
+    {
+        Message = message;
+        return false;
+    }
+
+    internal void SetBossPartyWaiting(bool waiting)
+    {
+        if (waiting) Message = BossCue = BossRules.WaitingForParty;
+        else if (bossPartyWaiting) { Message = BossRules.PartyReady; BossCue = ""; }
+        bossPartyWaiting = waiting;
+    }
+    public SimulationSnapshot Snapshot()=>new(Player.Copy(),Phase,Weather,Hooked?.Id,LastCatch,Tension,Progress,FishDirection,BossCue,Message,abilitySeconds,JumpHeight,Dive);
     public void ApplySnapshot(SimulationSnapshot snapshot)
     {
         if(snapshot.Player is null || snapshot.Message is null || snapshot.BossCue is null ||
             (snapshot.HookedId is { } id && !Catalog.Species.Any(x=>x.Id==id) && !Catalog.Regions.Any(x=>"boss-"+x.Id==id)))
             throw new InvalidDataException("Invalid server snapshot references.");
         SaveStore.Validate(snapshot.Player);
+        if (snapshot.Dive is { } dive && (!snapshot.Player.InWater || !Enum.IsDefined(dive.Stage) ||
+            !float.IsFinite(dive.AimYaw) || Math.Abs(dive.AimYaw) > MathF.PI ||
+            !float.IsFinite(dive.Focus) || dive.Focus is < 0 or > 1 || !float.IsFinite(dive.Charge) || dive.Charge is < 0 or > 1 ||
+            !double.IsFinite(dive.Seconds) || dive.Seconds is < 0 or > 60 || !float.IsFinite(dive.Travelled) || dive.Travelled is < 0 or > 7 ||
+            new[] { dive.OriginX, dive.OriginZ, dive.TargetX, dive.TargetZ, dive.ProjectileX, dive.ProjectileZ }.Any(x => !float.IsFinite(x) || Math.Abs(x) > WorldDefinition.Boundary + 8)))
+            throw new InvalidDataException("Invalid underwater encounter geometry.");
         if(!Enum.IsDefined(snapshot.Phase) || !Enum.IsDefined(snapshot.Weather) || !double.IsFinite(snapshot.Tension) ||
             snapshot.Tension is <0 or >1 || !double.IsFinite(snapshot.Progress) || snapshot.Progress is <0 or >1 ||
             !double.IsFinite(snapshot.FishDirection) || Math.Abs(snapshot.FishDirection)>1.01 ||
@@ -237,12 +269,13 @@ public sealed partial class GameSession
         LastCatch=snapshot.LastCatch; Tension=snapshot.Tension; Progress=snapshot.Progress;
         FishDirection=snapshot.FishDirection; BossCue=snapshot.BossCue; Message=snapshot.Message;
         abilitySeconds=snapshot.AbilitySeconds; JumpHeight=snapshot.JumpHeight;
+        Dive=snapshot.Dive;
     }
     public void SynchronizeEnvironment(double hours,Weather weather)
     { Player.WorldHours=hours; Weather=weather; }
     public void SynchronizeBossClock(double? seconds)=>sharedEncounterSeconds=seconds;
     public void AbortFishing(string message)
-    { Phase=FishingPhase.Escaped; deferredBossRewards=false; sharedEncounterSeconds=null; BossCue=""; Message=message; }
+    { Phase=FishingPhase.Escaped; deferredBossRewards=false; bossPartyWaiting=false; sharedEncounterSeconds=null; Dive=null; BossCue=""; Message=message; }
 
     public int SellAll()
     {
@@ -325,7 +358,14 @@ public sealed partial class GameSession
 
     public void Move(float seconds, Vector2 input)
     {
-        if (Busy) return;
+        if (Busy && !Player.InWater) return;
+        if (Player.InWater)
+        {
+            // Movement is relative to the underwater view; while aiming, horizontal input turns it.
+            if (Dive is { TriggerHeld: true }) input.X = 0;
+            var forward = DiveAim;
+            input = new Vector2(-forward.Y, forward.X) * input.X - forward * input.Y;
+        }
         Traversal.Move(Player, World, seconds, input, AbilityActive && Character.Id is "ojan" or "ojol" or "pendaki", jumpSeconds > 0);
         if (Player.OnFoot && World.CanWalk(Traversal.Position(Player), Character.Id is "ojan" or "pendaki", Character.Id == "tono")) safeFootPosition = Traversal.Position(Player);
     }

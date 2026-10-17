@@ -14,6 +14,8 @@ Space casts while idle. After a bite hold Space to reel; release to reduce tensi
 
 Sell in **Koleksi**, claim ten general/fourteen regional quests in **Misi**, upgrade in **Bengkel**, and unlock regions through the atlas. There are 44 catalog catches plus fourteen regional bosses. Conservation encounters are recorded and released automatically. Bosses require rod level 3 and ten catches: respect attack warnings and reel during recovery.
 
+**Kraken Raja Ampat requires a party.** Join the same online room with at least one partner, travel to Raja Ampat, and return to your boats. Both players need a level 3 rod, ten catches, inventory space and bait money. Each selects **Challenge regional boss**. Combat waits until two participants have joined and pauses if fewer than two remain connected; the three-minute encounter deadline keeps running. Idle connections time out after 30 seconds. Reconnect with your saved identity to resume. Solo regional bosses elsewhere remain available.
+
 Donate species, place exhibits and improve aquarium/museum buildings. Visit their displays on foot. Income accrues only during active simulation.
 
 In Raja Ampat, select **Catching method** to enter snorkeling or spear mode from a boat. WASD swims; hold Reel and follow A/D during encounters. Snorkeling records and releases wildlife; spear mode excludes conservation species. Return within four metres of the moored boat to select the rod again. These modes consume no bait.

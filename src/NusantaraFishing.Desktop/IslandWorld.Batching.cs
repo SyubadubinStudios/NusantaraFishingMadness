@@ -10,7 +10,7 @@ public sealed partial class IslandWorld
     public int StaticBatches { get; private set; }
     private void BatchStaticScenery()
     {
-        var dynamicIds=vents.Select(x=>x.Id).Concat(new[]{bobber.Id,fishingLine.Id,rain.Id}).ToHashSet();
+        var dynamicIds=vents.Select(x=>x.Id).Concat(new[]{bobber.Id,fishingLine.Id,nearRain.Id,distantRain.Id}).ToHashSet();
         var groups=staticMeshes.Where(x=>!dynamicIds.Contains(x.Id) && x.Material is not null && x.Geometry is not null)
             .GroupBy(x=>(Geometry:x.Geometry!.Id,Material:x.Material!.Id,Cast:x.CastShadow,Receive:x.ReceiveShadow)).ToArray();
         foreach(var group in groups)

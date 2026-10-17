@@ -14,6 +14,8 @@ Spasi melempar saat tidak bertarung. Setelah sambaran tahan Spasi untuk menarik,
 
 Jual di **Koleksi**, klaim sepuluh misi umum/empat belas regional di **Misi**, tingkatkan alat di **Bengkel**, lalu buka wilayah melalui atlas. Tersedia 44 entri tangkapan dan empat belas boss regional. Satwa konservasi dicatat lalu otomatis dilepas. Boss memerlukan joran level 3 dan sepuluh tangkapan: lepas saat serangan, tarik saat pemulihan.
 
+**Kraken Raja Ampat memerlukan party.** Bergabunglah ke ruang online yang sama dengan minimal satu partner, pergi ke Raja Ampat, lalu kembali ke perahu. Keduanya perlu joran level 3, sepuluh tangkapan, ruang tas, dan koin umpan. Masing-masing memilih **Tantang boss regional**. Pertarungan menunggu dua peserta dan berhenti sementara jika peserta terhubung kurang dari dua; batas waktu tiga menit tetap berjalan. Koneksi tanpa aktivitas kedaluwarsa setelah 30 detik. Gunakan identitas tersimpan untuk menyambung kembali. Boss regional lain tetap tersedia untuk solo.
+
 Donasikan spesies, tempatkan koleksi dan tingkatkan akuarium/museum. Kunjungi bangunan sambil berjalan. Pendapatan hanya dihitung saat simulasi aktif.
 
 Di Raja Ampat, pilih **Cara menangkap** untuk snorkeling atau tombak dari perahu. WASD untuk berenang; tahan Tarik dan ikuti A/D selama encounter. Snorkeling mencatat lalu melepas satwa; tombak mengecualikan satwa konservasi. Dekati perahu yang tetap tertambat hingga jarak empat meter untuk kembali memakai joran. Kedua metode ini tidak menghabiskan umpan.

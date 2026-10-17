@@ -14,7 +14,8 @@ public sealed partial class IslandWorld : IDisposable
     public Node Boat { get; }
     private readonly Node sun;
     private readonly Node bobber;
-    private readonly Node rain;
+    private readonly Node nearRain;
+    private readonly Node distantRain;
     private readonly WaterSurface water;
     private readonly List<Node> fish = [];
     private readonly Dictionary<string, Material> materials = [];
@@ -40,10 +41,28 @@ public sealed partial class IslandWorld : IDisposable
     private FishingPhase previousPhase;
     private float lastDt;
     private float ambientTime;
+    private bool rainDiagnosticsLogged;
     public bool ReducedMotion { get; set; }
     public float WaterClarity { get; set; } = .075f;
     public float WaveStrength { get; set; } = .035f;
     public string? AssetWarning { get; private set; }
+    private bool IsRaining => !game.World.Underground && game.Weather is Weather.Rain or Weather.Storm or Weather.Lightning;
+
+    private static Matrix4x4[] RainInstances(Random random, int count, float radius, int minHeight, int maxHeight,
+        float width, float length)
+    {
+        var transforms = new Matrix4x4[count];
+        for (var i = 0; i < transforms.Length; i++)
+        {
+            var x = (random.NextSingle() * 2 - 1) * radius;
+            var z = (random.NextSingle() * 2 - 1) * radius;
+            var y = random.Next(minHeight, maxHeight);
+            // Keep particle scale in each instance: scaling the node also scales
+            // every instance offset and collapses the weather field around origin.
+            transforms[i] = Matrix4x4.CreateScale(width, length, width) * Matrix4x4.CreateTranslation(x, y, z);
+        }
+        return transforms;
+    }
 
     internal IslandWorld(ThreeNetView view, GameSession game, SceneCacheCompatibility? sceneCache = null)
     {
@@ -134,9 +153,11 @@ public sealed partial class IslandWorld : IDisposable
                 Asset("reef-fish", Vector3.Zero, new(.7f + i % 3 * .1f), swimmingFish, false);
                 fish.Add(swimmingFish);
             }
-            rain = Mesh(cylinder, "#B7D8DB", Vector3.Zero, new(.018f, .45f, .018f));
-            this.sceneCache.SetInstances(rain, Enumerable.Range(0, 110).Select(_ => Matrix4x4.CreateTranslation(random.Next(-20, 20), random.Next(1, 15), random.Next(-20, 20))).ToArray());
-            rain.Visible = false;
+            nearRain = Mesh(cylinder, "#E7F1F3", Vector3.Zero, Vector3.One);
+            distantRain = Mesh(cylinder, "#D1E1E4", Vector3.Zero, Vector3.One);
+            this.sceneCache.SetInstances(nearRain, RainInstances(random, 900, 34, 8, 18, .04f, 1.35f));
+            this.sceneCache.SetInstances(distantRain, RainInstances(random, 1_800, 95, 14, 26, .028f, .95f));
+            nearRain.Visible = distantRain.Visible = false;
             view.Scene = Scene;
             view.Camera = Camera;
             orbit = new OrbitController(view, Camera)
@@ -262,8 +283,9 @@ public sealed partial class IslandWorld : IDisposable
         orbit.Apply();
         if (game.Player.InWater && reviewTarget is null)
         {
-            Camera.Position = new(game.Player.PositionX, -.35f, game.Player.PositionZ - 1.3f);
-            Camera.LookAt(new(game.Player.PositionX, -.65f, game.Player.PositionZ - 6));
+            Camera.Position = new(game.Player.PositionX, GameSession.DiveDepth, game.Player.PositionZ);
+            var aim = game.DiveAim;
+            Camera.LookAt(Camera.Position + new Vector3(aim.X, 0, aim.Y) * 6);
         }
         var floatPosition = new Vector3(game.HookPosition.X, MathF.Sin(time * 3) * .04f, game.HookPosition.Y);
         bobber.Position = floatPosition;
@@ -286,7 +308,9 @@ public sealed partial class IslandWorld : IDisposable
         }
         Scene.UpdateAnimations(dt);
         water.Style = water.Style with { Absorption = WaterClarity, Detail = WaveStrength };
-        water.Simulation.RainRate = game.Weather is Weather.Rain or Weather.Storm or Weather.Lightning ? 12 : 0;
+        water.Simulation.RainRate = IsRaining
+            ? (game.Weather is Weather.Storm or Weather.Lightning ? 30 : 18)
+            : 0;
         water.Update(dt);
         if (!ReducedMotion) ambientTime += dt;
         UpdateAtmosphere(dt, ambientTime);
@@ -295,10 +319,20 @@ public sealed partial class IslandWorld : IDisposable
         UpdatePlayerVisual(move, time);
         UpdateExhibition(time);
         UpdateCatchVisual(time);
+        UpdateDiveSpear();
         UpdateBoss(time);
         UpdatePeers(dt,time);
-        rain.Visible = game.Weather is Weather.Rain or Weather.Storm or Weather.Lightning;
-        rain.Position = boatPosition + new Vector3(0, -(time * 8 % 12), 0);
+        nearRain.Visible = distantRain.Visible = IsRaining;
+        // Fill the active play area with two broad world-space layers. The original
+        // emitter was a sparse 40 m square attached only to the moored boat.
+        var rainArea = reviewTarget ?? playerPosition;
+        var rainOffset = new Vector3(rainArea.X, -(time * 7 % 8), rainArea.Z);
+        nearRain.Position = distantRain.Position = rainOffset;
+        if (!rainDiagnosticsLogged && Program.Arguments.Contains("--rain-review") && IsRaining)
+        {
+            Console.WriteLine($"RAIN_RENDER_OK: region={game.Region.Id}, drops={nearRain.InstanceCount + distantRain.InstanceCount}, near/far enabled, rate={water.Simulation.RainRate}, area=({rainArea.X:N1},{rainArea.Z:N1})");
+            rainDiagnosticsLogged = true;
+        }
     }
     /// <summary>Swell height in metres for the current settings, weather and body of water.</summary>
     private float SwellAmplitude()

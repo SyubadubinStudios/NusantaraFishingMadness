@@ -15,6 +15,7 @@ public sealed partial class IslandWorld
     private readonly Dictionary<uint, (AnimationClip Clip, AnimationPlayer Player)[]> catchAnimations = [];
     private Node? camouflageRock;
     private Node? inkCloud;
+    private Node? diveSpear;
     private (Node Node, Vector3 Position)[] catchMotifs = [];
     private readonly WakeTrail hookedWake = new(.3f, 1, .45f, .45f, .2f, 1.5f);
 
@@ -103,7 +104,9 @@ public sealed partial class IslandWorld
         if (species.Id == "shadow" && !landed) { catchVisual.Visible = false; return; }
         if (species.Id == "phantom" && !landed) catchVisual.Visible = time % 3 < 2;
         var dart = species.Id == "roket" && !landed ? MathF.Sin(time * 8) * .9f : 0;
-        catchVisual.Position = landed
+        catchVisual.Position = game.Player.InWater && game.Dive is { } dive
+            ? new(dive.TargetX, GameSession.DiveDepth, dive.TargetZ)
+            : landed
             ? new(game.Player.PositionX + 1.8f, 1.4f, game.Player.PositionZ - 1)
             : new(game.HookPosition.X + dart, -.35f + MathF.Sin(time * 3) * .12f, game.HookPosition.Y);
         catchVisual.EulerAngles = new(0, landed ? time * .35f : (float)game.FishDirection * .8f, 0);
@@ -124,6 +127,29 @@ public sealed partial class IslandWorld
                 catchMaterials[i].Update(x => x with { BaseColor = Vector4.Lerp(original.BaseColor, color, .65f) });
             }
         }
+    }
+
+    private void UpdateDiveSpear()
+    {
+        if (game.Player.CatchingMethod != CatchingMethod.Spear)
+        {
+            if (diveSpear is not null) diveSpear.Visible = false;
+            return;
+        }
+        if (diveSpear is null)
+        {
+            diveSpear = Scene.CreateNode(name: "underwater-spear");
+            Mesh(cylinder, "#92734E", Vector3.Zero, new(.025f, 1.4f, .025f), diveSpear);
+            Mesh(cone, "#D4DFDC", new(0, .85f, 0), new(.06f, .3f, .06f), diveSpear);
+        }
+        diveSpear.Visible = game.Dive?.Stage is not (DiveStage.Complete or DiveStage.Miss);
+        var aim = game.DiveAim;
+        var forward = new Vector3(aim.X, 0, aim.Y);
+        diveSpear.Position = game.Dive is { Stage: DiveStage.Projectile } shot
+            ? new(shot.ProjectileX, GameSession.DiveDepth, shot.ProjectileZ)
+            : new Vector3(game.Player.PositionX, GameSession.DiveDepth - .18f, game.Player.PositionZ) +
+                new Vector3(-aim.Y, 0, aim.X) * .28f + forward * (.85f - (game.Dive?.Charge ?? 0) * .25f);
+        diveSpear.Rotation = Quaternion.CreateFromAxisAngle(Vector3.Cross(Vector3.UnitY, forward), MathF.PI / 2);
     }
 
     private void EnsureBossModel(string id)

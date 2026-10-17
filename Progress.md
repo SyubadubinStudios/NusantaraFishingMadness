@@ -5,6 +5,20 @@ Created by Ariana Mischa Fadhila of Syubadubin Studios.
 
 ## Implemented and verified locally
 
+## Kraken party requirement / Syarat party Kraken - 2026-10-17
+
+- **EN:** Kraken now requires two ready online players in the same room and Raja Ampat, aboard boats with the existing equipment/catch requirements. Each player must explicitly challenge the boss. Combat pauses while fewer than two participants remain connected, including before a partner joins; the three-minute deadline continues. Local solo attempts and unsuitable/off-region/disconnected partners are rejected. Other regional bosses retain solo play. The UI explains the requirement in ID/EN.
+- **ID:** Kraken kini memerlukan minimal dua pemain siap di ruang online dan Raja Ampat yang sama. Keduanya harus berada di perahu dan memilih tantang boss. Pertarungan berhenti sementara saat peserta terhubung kurang dari dua, tetapi batas waktu tiga menit tetap berjalan. Pemain solo, partner belum siap, berada di wilayah lain, atau terputus tidak memenuhi syarat. Boss regional lain tetap bisa dimainkan solo.
+
+Validation: Release build zero warnings/errors; **82 tests passed** (75 Core, seven Desktop), including two/four-player Kraken victories, participation/disconnect/rejoin, timeout without loot, and reconnect/restart reward safety. Four real HTTP clients passed **25 checks with 100 ms injected client delay** in 29.5 seconds. Evidence: [network Kraken](docs/validation/network-kraken.json); repeat with `dotnet run --project tools/NusantaraFishing.Acceptance -c Release -- --kraken --delay-ms 100`. Native UI text appearance has not been recaptured for this gameplay change. Dedicated underwater controls, additional bespoke boss mechanics and production gates remain open.
+
+## Environmental rain / Hujan lingkungan - 2026-10-17
+
+- **EN:** Fixed precipitation appearing only around the player. The emitter had 110 short drops in a small area attached to the moored boat, and node scale multiplied the instance positions, collapsing them near the origin. Rain now uses 2,700 properly scaled near/distant drops across the active view; rain/storm rates create broader surface disturbance, and underground scenes suppress outdoor rain.
+- **ID:** Hujan tidak lagi menumpuk di sekitar pemain. Sebelumnya hanya 110 tetes pendek mengikuti perahu, dan skala node ikut mengecilkan posisi instance. Kini ada 2.700 tetes dekat/jauh yang tersebar pada area pandang; hujan dan badai menambah riak permukaan, sedangkan area bawah tanah tidak menampilkan hujan luar.
+
+Validation: Release build zero warnings/errors, 68 tests passed, visual assets remain valid. Native Raja Ampat review logged `RAIN_RENDER_OK` with 2,700 enabled instances and captured matching clear/rain camera views. See [rain environment validation](docs/validation/weather-rain.md).
+
 ## Visual polish / Pemolesan visual - 2026-10-17
 
 - **EN:** Island heights now use irregular shoulders and saddles shared by rendering and climbing. Indexed terrain blends limestone, foliage and wet sand by slope and elevation, with screen-space erosion detail. The existing Rodin karst now has an isolated 1,799-triangle weathered derivative from Blender MCP. Cliff outcrops use a recessed stone backing. Waterfalls use curved sheets with warped stream texture, translucent edges, foam, mist and pool ripples. Shader creation is stable across region builds. Direct Raja Ampat and Terjun native captures are in [visual polish](docs/visual-polish.md).

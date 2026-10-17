@@ -2,7 +2,7 @@ namespace NusantaraFishing.Core.Networking;
 
 public static class CoopProtocol
 {
-    public const int Version=2;
+    public const int Version=3;
     public const int CoopCapacity=4;
     public const int FestivalCapacity=32;
 }

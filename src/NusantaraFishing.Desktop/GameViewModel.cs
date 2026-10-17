@@ -38,6 +38,7 @@ public sealed class GameViewModel : ReactiveObject
             "ability"=>Game.ActivateAbility(),"board"=>Game.ToggleBoarding(),"jump"=>Game.Jump(),
             "method"=>Game.SelectCatchingMethod(target??""),"barter"=>Game.Barter(target??""),
             "climb"=>Game.ClimbTree(),
+            "cancel-dive"=>Game.CancelDive(),
             "donate"=>Game.Donate(target??""),"place"=>Game.PlaceExhibit(target??"",slot),
             "aquarium"=>Game.UpgradeExhibition(false),"museum"=>Game.UpgradeExhibition(true),
             "quest"=>Game.ClaimQuest(target??""),"sell"=>Sell(),_=>false

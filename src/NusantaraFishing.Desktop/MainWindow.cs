@@ -39,6 +39,10 @@ public sealed partial class MainWindow : Window
     private readonly TextBlock conditions = Text("", 12, Muted);
     private readonly TextBlock fishName = Text("Siap untuk kejutan?", 19, Brushes.White, true);
     private readonly TextBlock directionText = Text("A / D  •  Ikuti arah ikan", 12, Muted);
+    private readonly TextBlock tensionCaption = Text("TEGANGAN TALI", 10, Muted);
+    private readonly TextBlock progressCaption = Text("JARAK TANGKAPAN", 10, Muted);
+    private readonly TextBlock diveReticle = new() { Text = "+", FontSize = 32, Foreground = Brushes.White,
+        HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, IsHitTestVisible = false, IsVisible = false };
     private readonly TextBlock saveStatus = Text("Tersimpan otomatis setiap 15 detik", 11, Muted);
     private readonly ProgressBar tension = new() { Minimum = 0, Maximum = 1, Height = 8, Foreground = Accent };
     private readonly ProgressBar progress = new() { Minimum = 0, Maximum = 1, Height = 8, Foreground = Brush.Parse("#65C5BA") };
@@ -145,6 +149,7 @@ public sealed partial class MainWindow : Window
         };
         var viewArea = new Grid { ClipToBounds = true };
         viewArea.Children.Add(viewport);
+        viewArea.Children.Add(diveReticle);
         var titlePanel = new StackPanel { Margin = new Thickness(16), Spacing = 5, VerticalAlignment = VerticalAlignment.Top, IsHitTestVisible = false };
         titlePanel.Children.Add(Text("CATATAN EKSPEDISI   /   NUSANTARA", 10, Brush.Parse("#F4E3B4"), true));
         titlePanel.Children.Add(location);
@@ -261,8 +266,8 @@ public sealed partial class MainWindow : Window
                 sidebar.Children.Add(Text(vm.Game.Character.Name, 20, Brushes.White, true));
                 sidebar.Children.Add(Text(vm.Game.Character.Bonus, 12, Muted));
                 sidebar.Children.Add(fishName);
-                sidebar.Children.Add(Text("TEGANGAN TALI", 10, Muted)); sidebar.Children.Add(tension);
-                sidebar.Children.Add(Text("JARAK TANGKAPAN", 10, Muted)); sidebar.Children.Add(progress);
+                sidebar.Children.Add(tensionCaption); sidebar.Children.Add(tension);
+                sidebar.Children.Add(progressCaption); sidebar.Children.Add(progress);
                 sidebar.Children.Add(directionText);
                 sidebar.Children.Add(cast);
                 sidebar.Children.Add(Button("Kemampuan aktif  [F]", () => vm.Execute("ability")));
@@ -275,6 +280,7 @@ public sealed partial class MainWindow : Window
                     {
                         sidebar.Children.Add(Button("Snorkeling • dokumentasi satwa", () => vm.Execute("method", "Snorkel")));
                         sidebar.Children.Add(Button("Spearfishing • gunakan tombak", () => vm.Execute("method", "Spear")));
+                        sidebar.Children.Add(Button("Hentikan pengamatan bawah air", () => vm.Execute("cancel-dive")));
                     }
                     if (vm.Game.Character.Id == "ojan")
                     {
@@ -284,6 +290,8 @@ public sealed partial class MainWindow : Window
                 }
                 sidebar.Children.Add(Button("Tantang boss regional", () => vm.BossCommand.Execute(null)));
                 sidebar.Children.Add(Text("Boss: joran Lv. 3 + 10 tangkapan", 11, Muted));
+                if (BossRules.MinimumPlayers(vm.Game.Region.Id) > 1)
+                    sidebar.Children.Add(Text(BossRules.PartyRequired, 12, Accent));
                 sidebar.Children.Add(Text(vm.Game.World.Mechanic, 12, Muted));
                 if (vm.Game.World.HasGovernmentPier)
                     sidebar.Children.Add(Text("Pos pemerintah di timur dermaga (16, 28): Pak Tono memiliki izin masuk.", 12, Muted));
@@ -459,6 +467,7 @@ public sealed partial class MainWindow : Window
         actionHint.Text = Localization.T($"{settings.Keys["cast"]} Lempar / tarik  •  {settings.Keys["board"]} Naik / turun  •  {settings.Keys["ability"]} Kemampuan  •  {settings.Keys["jump"]} Lompat");
         conditions.Text = Localization.T(conditions.Text ?? "");
         directionText.Text = Localization.T(directionText.Text ?? "");
+        RefreshDiveHud();
     }
     private static string WeatherName(Weather weather) => weather switch
     { Weather.Sunny => "CERAH", Weather.Rain => "HUJAN", Weather.Storm => "BADAI", Weather.Fog => "KABUT", _ => "PETIR" };

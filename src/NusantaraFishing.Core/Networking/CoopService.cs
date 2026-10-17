@@ -109,6 +109,7 @@ public sealed class CoopService
             {
                 "input"=>SetInput(session,command),
                 "cast"=>!participating && game.Cast(),
+                "cancel-dive"=>game.CancelDive(),
                 "boss"=>StartBoss(session),
                 "sell"=>Sell(game),
                 "rod"=>game.UpgradeRod(),
@@ -120,7 +121,7 @@ public sealed class CoopService
                 "barter"=>game.Barter(target),
                 "climb"=>game.ClimbTree(),
                 "ability"=>game.ActivateAbility(),
-                "board"=>game.ToggleBoarding(),
+                "board"=>!participating && game.ToggleBoarding(),
                 "jump"=>game.Jump(),
                 "donate"=>game.Donate(target),
                 "place"=>game.PlaceExhibit(target,command.Slot),
@@ -140,13 +141,29 @@ public sealed class CoopService
     private static bool Sell(GameSession game)
     { if(game.Busy) return false; game.SellAll(); return true; }
     private CoopBossState? CurrentBoss(Session session)=>state.Bosses.FirstOrDefault(x=>x.Room==session.Account.Room && x.Region==session.Game.Region.Id);
+    private bool ReadyForBoss(Session member, string room, string region) =>
+        Active(member) && member.Account.Room == room && member.Game.Region.Id == region &&
+        member.Game.Player.RodLevel >= 3 && member.Game.Player.TotalCaught >= 10 &&
+        !member.Game.Player.OnFoot && !member.Game.Player.InWater &&
+        member.Game.Player.Inventory.Count < 200 && member.Game.Player.Coins >= member.Game.Bait.Cost &&
+        (!member.Game.Busy || member.Game.BossRewardsDeferred);
+
+    private bool WaitingForParty(CoopBossState boss) => BossRules.MinimumPlayers(boss.Region) > 1 &&
+        sessions.Values.Count(x => Active(x) && x.Account.Room == boss.Room && x.Game.Region.Id == boss.Region &&
+            !x.Game.Player.OnFoot && !x.Game.Player.InWater && boss.Contributions.ContainsKey(x.Account.Id)) < BossRules.MinimumPlayers(boss.Region);
+
     private bool StartBoss(Session session)
     {
         var game=session.Game;
         var boss=CurrentBoss(session);
-        if(game.Busy || game.Player.RodLevel<3 || game.Player.TotalCaught<10 ||
-            boss is { Health:<=0 } && state.ElapsedSeconds-boss.CompletedAt<60) return false;
-        if(!game.Cast(true,true)) return false;
+        if(game.Busy) return false;
+        if(boss is { Health:<=0 } && state.ElapsedSeconds-boss.CompletedAt<60)
+            return game.RejectBoss("Boss sedang beristirahat. Tunggu hingga 60 detik sebelum menantang lagi.");
+        var readyPlayers = sessions.Values.Count(x => ReadyForBoss(x, session.Account.Room, game.Region.Id));
+        if (BossRules.MinimumPlayers(game.Region.Id) > 1 &&
+            (!ReadyForBoss(session, session.Account.Room, game.Region.Id) || readyPlayers < BossRules.MinimumPlayers(game.Region.Id)))
+            return game.RejectBoss(BossRules.PartyRequired);
+        if(!game.CastSharedBoss(Math.Max(1, readyPlayers))) return false;
         if(boss is null || boss.Health<=0)
         {
             if(boss is not null) state.Bosses.Remove(boss);
@@ -182,6 +199,8 @@ public sealed class CoopService
                 session.Game.SynchronizeEnvironment(state.WorldHours,weather);
                 var shared=CurrentBoss(session);
                 session.Game.SynchronizeBossClock(shared is { Health:>0 }?state.ElapsedSeconds-shared.StartedAt:null);
+                session.Game.SetBossPartyWaiting(shared is { Health:>0 } &&
+                    shared.Contributions.ContainsKey(session.Account.Id) && WaitingForParty(shared));
                 session.Game.Tick(seconds,input.Reel,input.Direction);
                 session.Game.Move((float)seconds,new(input.X,input.Z));
                 if(phase==FishingPhase.Fighting && session.Game.Phase==FishingPhase.Landed)
@@ -268,7 +287,7 @@ public sealed class CoopService
         return new(account.Room,account.Mode,account.Id,session.Game.Snapshot(),peers,
             boss is null?null:new(boss.Id,boss.Region,boss.Health,boss.Maximum,boss.Health>0?BossCue(boss):boss.Expired?"Waktu encounter habis.":"Boss dikalahkan!",boss.Contributions.Count(x=>x.Value>0)),clock.GetUtcNow());
     }
-    private string BossCue(CoopBossState boss)=>((state.ElapsedSeconds-boss.StartedAt)%9) switch
+    private string BossCue(CoopBossState boss)=>WaitingForParty(boss) ? BossRules.WaitingForParty : ((state.ElapsedSeconds-boss.StartedAt)%9) switch
     { <2=>"BERSIAP • Lepas tarikan saat serangan datang.",<4=>"SERANGAN • Lindungi tali.",_=>"Boss kelelahan • tarik bersama." };
     public void Flush() { lock(gate) Persist(); }
     private void Persist()

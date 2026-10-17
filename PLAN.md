@@ -60,7 +60,8 @@ Acceptance passed locally: four independent HTTP clients complete an encounter w
 - [x] Octopus camouflage/ink, Phantom visibility, Ninja reflexes, crab counter window, rocket dash and additional creature attack cues.
 - [x] Fourteen regional music loops, boss/DJ themes and crossfades; raft houses, government outposts and guards.
 - [ ] Refine 25 procedural catch exports, remaining simple boats/scenery and shared regional architecture; polish cloth weights and individual tentacle animation.
-- [ ] Give snorkeling/spearfishing dedicated approach/aim/throw interactions; finish boss-specific mechanics including Kraken party requirements and deeper NPC interactions.
+- [x] Kraken requires at least two ready online players in the same room and Raja Ampat; combat waits for explicit participation, pauses below two connected participants, and retains the encounter deadline and one-time rewards.
+- [ ] Give snorkeling/spearfishing dedicated approach/aim/throw interactions; finish remaining boss-specific mechanics and deeper NPC interactions.
 
 Catalog coverage is not full design fidelity. See [design alignment](docs/design-alignment.md) for the implemented behavior and remaining gaps. Earlier visual-package checks above describe the previous preview; current package evidence belongs in `Progress.md`.
 

@@ -59,10 +59,11 @@ public sealed partial class GameSession
             }
             else Player.CatchingMethod = selected;
         }
+        Dive = null;
         Message = selected switch
         {
-            CatchingMethod.Snorkel => "Snorkeling: dekati dan dokumentasikan satwa, lalu lepaskan. Tahan Tarik dan ikuti arahnya.",
-            CatchingMethod.Spear => "Tombak: ikuti arah target A / D saat menahan Tarik. Satwa konservasi tidak diburu.",
+            CatchingMethod.Snorkel => "Snorkeling: cari satwa, berenang mendekat, lalu tahan aksi untuk memusatkan bidikan dan dokumentasi.",
+            CatchingMethod.Spear => "Tombak: cari target, berenang mendekat, tahan aksi untuk membidik, lalu lepaskan untuk melempar.",
             CatchingMethod.Hand => "Tangkapan tangan: Ojan siap menangkap ikan, kepiting, dan katak di tepian.",
             _ => "Joran siap digunakan."
         };
